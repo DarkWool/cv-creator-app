@@ -1,0 +1,26 @@
+header {
+  border-bottom: 1px solid hsla(207, 27%, 89%, 1);
+  padding: 10px;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 3.2rem;
+  font-weight: bold;
+}
+
+.header_content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_nav > ul {
+  display: flex;
+  list-style: none;
+}
+
+.header_nav-item {
+  padding: 15px;
+  font-weight: 500;
+}
