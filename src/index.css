@@ -12,6 +12,10 @@
   font: inherit;
 }
 
+:root {
+  --accentColor: hsla(266, 100%, 50%, 1);
+}
+
 ::selection {
   background-color: hsla(209, 75%, 37%, 0.85);
   color: white;

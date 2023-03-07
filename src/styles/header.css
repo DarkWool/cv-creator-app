@@ -23,4 +23,9 @@ h1 {
 .header_nav-item {
   padding: 15px;
   font-weight: 500;
+  cursor: pointer;
+}
+
+.header_nav-item:hover {
+  color: var(--accentColor);
 }

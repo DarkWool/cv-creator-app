@@ -2,6 +2,10 @@ import React from "react";
 import "../styles/header.css";
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <header>
@@ -12,8 +16,12 @@ class Header extends React.Component {
           </div>
           <nav className="header_nav">
             <ul>
-              <li className="header_nav-item">Edit CV</li>
-              <li className="header_nav-item">Preview my CV</li>
+              <li className="header_nav-item" onClick={() => this.props.onTogglePreview(false)}>
+                Edit CV
+              </li>
+              <li className="header_nav-item" onClick={() => this.props.onTogglePreview(true)}>
+                Preview my CV
+              </li>
             </ul>
           </nav>
         </div>
