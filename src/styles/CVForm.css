@@ -1,0 +1,68 @@
+input,
+textarea {
+  background-color: hsl(263.1, 100%, 94.9%);
+  appearance: none;
+  border: 0;
+  padding: 10px 10px;
+  border: 1px solid #d1b6ff;
+}
+
+.edit-block_header {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  align-items: center;
+  gap: 50px;
+  margin: 30px 0;
+  padding: 0 35px;
+}
+
+.edit-block_step-info {
+  display: flex;
+  flex-basis: 40%;
+  align-items: center;
+  gap: 25px;
+}
+
+.edit-block_step {
+  background-color: var(--accentColor);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: white;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}
+
+.edit-block_title {
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+
+.edit-block_form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 35px;
+  font-size: 1.4rem;
+  border: 2px solid hsla(266, 24%, 92%, 1);
+  border-radius: 20px;
+  background-color: hsl(264, 100%, 99%);
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.flex-2-rows {
+  display: flex;
+  gap: 30px;
+}

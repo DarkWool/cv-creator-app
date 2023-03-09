@@ -9,7 +9,7 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        <div className="content-margin header_content">
+        <div className="content-margin header_inner">
           <div>
             <h1>CV Creator</h1>
             <p>Made by DarkWool</p>

@@ -1,6 +1,7 @@
 header {
   border-bottom: 1px solid hsla(207, 27%, 89%, 1);
   padding: 10px;
+  font-size: 1.6rem;
 }
 
 h1 {
@@ -9,7 +10,7 @@ h1 {
   font-weight: bold;
 }
 
-.header_content {
+.header_inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
