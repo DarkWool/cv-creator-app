@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Header } from "./components/Header";
 import { CVForm } from "./components/CVForm";
+import { CVPreview } from "./components/CVPreview";
 
 class App extends Component {
   state = {
@@ -27,17 +28,14 @@ class App extends Component {
 
   render() {
     const currPage = this.state.isPreviewActive ? (
-      <div>
-        Preview...
-        <p>Name:</p>
-        <p>{this.state.name.trim()}</p>
-        <p>Last Name:</p>
-        <p>{this.state.lastName.trim()}</p>
-        <p>Profession:</p>
-        <p>{this.state.profession.trim()}</p>
-        <p>Description (About me): </p>
-        <p>{this.state.aboutMe.trim()}</p>
-      </div>
+      <CVPreview
+        generalInfo={{
+          name: this.state.name,
+          lastName: this.state.lastName,
+          profession: this.state.profession,
+          aboutMe: this.state.aboutMe,
+        }}
+      />
     ) : (
       <CVForm generalInfo={this.state} handleEditChanges={this.handleEditChanges} />
     );
