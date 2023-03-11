@@ -1,6 +1,7 @@
 import "../styles/CVForm.css";
 import { Component } from "react";
 import { GeneralInfo } from "./GeneralInfo";
+import { Skills } from "./Skills";
 
 export class CVForm extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ export class CVForm extends Component {
   }
 
   render() {
-    const { personalInfo } = this.props;
+    const { personalInfo, userSkills } = this.props;
 
     return (
       <>
@@ -24,6 +25,13 @@ export class CVForm extends Component {
           email={personalInfo.email}
           phoneNumber={personalInfo.phoneNumber}
           step={1}
+        />
+        <Skills
+          userSkills={userSkills}
+          onNewSkill={this.props.handleNewSkill}
+          onDeleteSkill={this.props.handleDeleteSkill}
+          onEditSkill={this.props.handleEditSkill}
+          step={2}
         />
       </>
     );

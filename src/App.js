@@ -17,6 +17,7 @@ class App extends Component {
       email: "",
       phoneNumber: "",
     },
+    skills: ["", "", ""],
   };
 
   togglePreview = (value) => {
@@ -36,13 +37,42 @@ class App extends Component {
     });
   };
 
+  handleNewSkill = () => {
+    const skills = [...this.state.skills, ""];
+    this.setState({
+      ...this.state,
+      skills,
+    });
+  };
+
+  handleEditSkill = (id, value) => {
+    const skills = this.state.skills;
+    skills[id] = value;
+    this.setState({
+      ...this.state,
+      skills,
+    });
+  };
+
+  handleDeleteSkill = (id) => {
+    const skills = this.state.skills.filter((skill, index) => index !== id);
+    this.setState({
+      ...this.state,
+      skills,
+    });
+  };
+
   render() {
     const currPage = this.state.isPreviewActive ? (
       <CVPreview personalInfo={this.state.personalInfo} />
     ) : (
       <CVForm
         personalInfo={this.state.personalInfo}
+        userSkills={this.state.skills}
         handlePersonalChanges={this.handlePersonalChanges}
+        handleNewSkill={this.handleNewSkill}
+        handleEditSkill={this.handleEditSkill}
+        handleDeleteSkill={this.handleDeleteSkill}
       />
     );
 
