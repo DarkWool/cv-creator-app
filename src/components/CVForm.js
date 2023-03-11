@@ -18,6 +18,12 @@ export class CVForm extends Component {
           lastName={generalInfo.lastName}
           profession={generalInfo.profession}
           aboutMe={generalInfo.aboutMe}
+          address={generalInfo.address}
+          linkedIn={generalInfo.linkedIn}
+          portfolio={generalInfo.portfolio}
+          email={generalInfo.email}
+          phoneNumber={generalInfo.phoneNumber}
+          step={1}
         />
       </>
     );

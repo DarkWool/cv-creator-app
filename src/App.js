@@ -10,6 +10,11 @@ class App extends Component {
     lastName: "",
     profession: "",
     aboutMe: "",
+    address: "",
+    linkedIn: "",
+    portfolio: "",
+    email: "",
+    phoneNumber: "",
   };
 
   togglePreview = (value) => {

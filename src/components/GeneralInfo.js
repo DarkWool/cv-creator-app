@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { FormHeader } from "./FormHeader";
 import { FormContainer } from "./FormContainer";
 
 export class GeneralInfo extends Component {
@@ -9,20 +10,7 @@ export class GeneralInfo extends Component {
   render() {
     return (
       <section className="edit-block">
-        <div className="edit-block_header">
-          <div className="edit-block_step-info">
-            <span className="edit-block_step">1</span>
-            <h2 className="edit-block_title">General Information</h2>
-          </div>
-          <div>
-            <p>
-              Etiam ullamcorper consectetur nunc volutpat fermentum. Sed vel purus eu ligula maximus
-              viverra. Ut mollis in augue in pharetra. Duis ornare ante libero. Integer suscipit
-              pretium placerat. Aliquam neque enim, placerat ut iaculis a, molestie sed magna.
-              Suspendisse aliquam feugiat libero, sit amet placerat dui porta a.
-            </p>
-          </div>
-        </div>
+        <FormHeader step={this.props.step} title={"General Information"} />
         <FormContainer>
           <div className="flex-2-rows">
             <div className="input-wrapper">
@@ -55,6 +43,60 @@ export class GeneralInfo extends Component {
               onChange={(e) => this.props.handleEditChanges("profession", e.target.value)}
               value={this.props.profession}
             />
+          </div>
+          <div className="input-wrapper">
+            <label htmlFor="cvAddress">Address</label>
+            <input
+              id="cvAddress"
+              name="cvAddress"
+              type="text"
+              onChange={(e) => this.props.handleEditChanges("address", e.target.value)}
+              value={this.props.address}
+            />
+          </div>
+          <div className="flex-2-rows">
+            <div className="input-wrapper">
+              <label htmlFor="cvLinkedIn">LinkedIn Profile</label>
+              <input
+                id="cvLinkedIn"
+                name="cvLinkedIn"
+                type="text"
+                onChange={(e) => this.props.handleEditChanges("linkedIn", e.target.value)}
+                value={this.props.linkedIn}
+              />
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="cvPortfolio">Portfolio</label>
+              <input
+                id="cvPortfolio"
+                name="cvPortfolio"
+                type="url"
+                onChange={(e) => this.props.handleEditChanges("portfolio", e.target.value)}
+                value={this.props.portfolio}
+              />
+            </div>
+          </div>
+          <div className="flex-2-rows">
+            <div className="input-wrapper">
+              <label htmlFor="cvEmail">Email</label>
+              <input
+                id="cvEmail"
+                name="cvEmail"
+                type="email"
+                onChange={(e) => this.props.handleEditChanges("email", e.target.value)}
+                value={this.props.email}
+              />
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="cvPhoneNumber">Phone number</label>
+              <input
+                id="cvPhoneNumber"
+                name="cvPhoneNumber"
+                type="tel"
+                onChange={(e) => this.props.handleEditChanges("phoneNumber", e.target.value)}
+                value={this.props.phoneNumber}
+              />
+            </div>
           </div>
           <div className="input-wrapper">
             <label htmlFor="cvAboutMe">Description (About me)</label>
