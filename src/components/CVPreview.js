@@ -6,26 +6,26 @@ export class CVPreview extends Component {
   }
 
   render() {
-    const { generalInfo } = this.props;
+    const { personalInfo } = this.props;
 
     return (
       <div>
         <p>
           <strong>Name:</strong>
         </p>
-        <p>{generalInfo.name.trim()}</p>
+        <p>{personalInfo.name.trim()}</p>
         <p>
           <strong>Last Name:</strong>
         </p>
-        <p>{generalInfo.lastName.trim()}</p>
+        <p>{personalInfo.lastName.trim()}</p>
         <p>
           <strong>Profession:</strong>
         </p>
-        <p>{generalInfo.profession.trim()}</p>
+        <p>{personalInfo.profession.trim()}</p>
         <p>
           <strong>Description (About me):</strong>
         </p>
-        <p>{generalInfo.aboutMe.trim()}</p>
+        <p>{personalInfo.aboutMe.trim()}</p>
       </div>
     );
   }

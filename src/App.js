@@ -6,15 +6,17 @@ import { CVPreview } from "./components/CVPreview";
 class App extends Component {
   state = {
     isPreviewActive: false,
-    name: "",
-    lastName: "",
-    profession: "",
-    aboutMe: "",
-    address: "",
-    linkedIn: "",
-    portfolio: "",
-    email: "",
-    phoneNumber: "",
+    personalInfo: {
+      name: "",
+      lastName: "",
+      profession: "",
+      aboutMe: "",
+      address: "",
+      linkedIn: "",
+      portfolio: "",
+      email: "",
+      phoneNumber: "",
+    },
   };
 
   togglePreview = (value) => {
@@ -24,25 +26,24 @@ class App extends Component {
     });
   };
 
-  handleEditChanges = (field, value) => {
+  handlePersonalChanges = (field, value) => {
     this.setState({
       ...this.state,
-      [field]: value,
+      personalInfo: {
+        ...this.state.personalInfo,
+        [field]: value,
+      },
     });
   };
 
   render() {
     const currPage = this.state.isPreviewActive ? (
-      <CVPreview
-        generalInfo={{
-          name: this.state.name,
-          lastName: this.state.lastName,
-          profession: this.state.profession,
-          aboutMe: this.state.aboutMe,
-        }}
-      />
+      <CVPreview personalInfo={this.state.personalInfo} />
     ) : (
-      <CVForm generalInfo={this.state} handleEditChanges={this.handleEditChanges} />
+      <CVForm
+        personalInfo={this.state.personalInfo}
+        handlePersonalChanges={this.handlePersonalChanges}
+      />
     );
 
     return (

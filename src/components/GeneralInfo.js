@@ -19,7 +19,7 @@ export class GeneralInfo extends Component {
                 id="cvName"
                 name="cvName"
                 type="text"
-                onChange={(e) => this.props.handleEditChanges("name", e.target.value)}
+                onChange={(e) => this.props.handleChanges("name", e.target.value)}
                 value={this.props.name}
               />
             </div>
@@ -29,7 +29,7 @@ export class GeneralInfo extends Component {
                 id="cvLastName"
                 name="cvLastName"
                 type="text"
-                onChange={(e) => this.props.handleEditChanges("lastName", e.target.value)}
+                onChange={(e) => this.props.handleChanges("lastName", e.target.value)}
                 value={this.props.lastName}
               />
             </div>
@@ -40,7 +40,7 @@ export class GeneralInfo extends Component {
               id="cvProfession"
               name="cvProfession"
               type="text"
-              onChange={(e) => this.props.handleEditChanges("profession", e.target.value)}
+              onChange={(e) => this.props.handleChanges("profession", e.target.value)}
               value={this.props.profession}
             />
           </div>
@@ -50,7 +50,7 @@ export class GeneralInfo extends Component {
               id="cvAddress"
               name="cvAddress"
               type="text"
-              onChange={(e) => this.props.handleEditChanges("address", e.target.value)}
+              onChange={(e) => this.props.handleChanges("address", e.target.value)}
               value={this.props.address}
             />
           </div>
@@ -61,7 +61,7 @@ export class GeneralInfo extends Component {
                 id="cvLinkedIn"
                 name="cvLinkedIn"
                 type="text"
-                onChange={(e) => this.props.handleEditChanges("linkedIn", e.target.value)}
+                onChange={(e) => this.props.handleChanges("linkedIn", e.target.value)}
                 value={this.props.linkedIn}
               />
             </div>
@@ -71,7 +71,7 @@ export class GeneralInfo extends Component {
                 id="cvPortfolio"
                 name="cvPortfolio"
                 type="url"
-                onChange={(e) => this.props.handleEditChanges("portfolio", e.target.value)}
+                onChange={(e) => this.props.handleChanges("portfolio", e.target.value)}
                 value={this.props.portfolio}
               />
             </div>
@@ -83,7 +83,7 @@ export class GeneralInfo extends Component {
                 id="cvEmail"
                 name="cvEmail"
                 type="email"
-                onChange={(e) => this.props.handleEditChanges("email", e.target.value)}
+                onChange={(e) => this.props.handleChanges("email", e.target.value)}
                 value={this.props.email}
               />
             </div>
@@ -93,7 +93,7 @@ export class GeneralInfo extends Component {
                 id="cvPhoneNumber"
                 name="cvPhoneNumber"
                 type="tel"
-                onChange={(e) => this.props.handleEditChanges("phoneNumber", e.target.value)}
+                onChange={(e) => this.props.handleChanges("phoneNumber", e.target.value)}
                 value={this.props.phoneNumber}
               />
             </div>
@@ -104,7 +104,7 @@ export class GeneralInfo extends Component {
               id="cvAboutMe"
               name="cvAboutMe"
               rows="8"
-              onChange={(e) => this.props.handleEditChanges("aboutMe", e.target.value)}
+              onChange={(e) => this.props.handleChanges("aboutMe", e.target.value)}
               value={this.props.aboutMe}
             />
           </div>

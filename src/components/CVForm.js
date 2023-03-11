@@ -8,21 +8,21 @@ export class CVForm extends Component {
   }
 
   render() {
-    const { generalInfo } = this.props;
+    const { personalInfo } = this.props;
 
     return (
       <>
         <GeneralInfo
-          handleEditChanges={this.props.handleEditChanges}
-          name={generalInfo.name}
-          lastName={generalInfo.lastName}
-          profession={generalInfo.profession}
-          aboutMe={generalInfo.aboutMe}
-          address={generalInfo.address}
-          linkedIn={generalInfo.linkedIn}
-          portfolio={generalInfo.portfolio}
-          email={generalInfo.email}
-          phoneNumber={generalInfo.phoneNumber}
+          handleChanges={this.props.handlePersonalChanges}
+          name={personalInfo.name}
+          lastName={personalInfo.lastName}
+          profession={personalInfo.profession}
+          aboutMe={personalInfo.aboutMe}
+          address={personalInfo.address}
+          linkedIn={personalInfo.linkedIn}
+          portfolio={personalInfo.portfolio}
+          email={personalInfo.email}
+          phoneNumber={personalInfo.phoneNumber}
           step={1}
         />
       </>
