@@ -3,6 +3,11 @@ import { Header } from "./components/Header";
 import { CVForm } from "./components/CVForm";
 import { CVPreview } from "./components/CVPreview";
 
+const language = {
+  lang: "",
+  proficiency: "null",
+};
+
 class App extends Component {
   state = {
     isPreviewActive: false,
@@ -18,6 +23,7 @@ class App extends Component {
       phoneNumber: "",
     },
     skills: ["", "", ""],
+    languages: [{ ...language }, { ...language }],
   };
 
   togglePreview = (value) => {
@@ -38,7 +44,7 @@ class App extends Component {
   };
 
   handleNewSkill = () => {
-    const skills = [...this.state.skills, ""];
+    const skills = ["", ...this.state.skills];
     this.setState({
       ...this.state,
       skills,
@@ -62,6 +68,44 @@ class App extends Component {
     });
   };
 
+  handleNewLanguage = () => {
+    const languages = [{ ...language }, ...this.state.languages];
+    this.setState({
+      ...this.state,
+      languages,
+    });
+  };
+
+  handleModifyLanguage = (id, field, value) => {
+    // Modify value
+    if (value) {
+      const updatedLanguages = this.state.languages.map((language, index) => {
+        if (id === index) {
+          return {
+            ...language,
+            [field]: value,
+          };
+        }
+        return language;
+      });
+
+      this.setState({
+        ...this.state,
+        languages: updatedLanguages,
+      });
+
+      return;
+    }
+
+    // Remove
+    const languages = [...this.state.languages];
+    languages.splice(id, 1);
+    this.setState({
+      ...this.state,
+      languages,
+    });
+  };
+
   render() {
     const currPage = this.state.isPreviewActive ? (
       <CVPreview personalInfo={this.state.personalInfo} />
@@ -69,10 +113,13 @@ class App extends Component {
       <CVForm
         personalInfo={this.state.personalInfo}
         userSkills={this.state.skills}
+        userLanguages={this.state.languages}
         handlePersonalChanges={this.handlePersonalChanges}
         handleNewSkill={this.handleNewSkill}
         handleEditSkill={this.handleEditSkill}
         handleDeleteSkill={this.handleDeleteSkill}
+        handleNewLanguage={this.handleNewLanguage}
+        handleModifyLanguage={this.handleModifyLanguage}
       />
     );
 

@@ -62,6 +62,10 @@ textarea {
   width: 100%;
 }
 
+.input-wrapper.row {
+  flex-direction: row;
+}
+
 .flex-2-rows {
   display: flex;
   gap: 30px;
