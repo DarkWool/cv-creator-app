@@ -4,6 +4,7 @@ import { GeneralInfo } from "./GeneralInfo";
 import { Skills } from "./Skills";
 import { Languages } from "./Languages";
 import { Education } from "./Education";
+import { WorkExperience } from "./WorkExperience";
 
 export class CVForm extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export class CVForm extends Component {
   }
 
   render() {
-    const { personalInfo, userSkills, userLanguages, userEducation } = this.props;
+    const { personalInfo, userSkills, userLanguages, userEducation, userExperience } = this.props;
 
     return (
       <>
@@ -46,6 +47,12 @@ export class CVForm extends Component {
           onNewEducationBlock={this.props.handleNewEducationBlock}
           handleChanges={this.props.handleEducationChanges}
           step={4}
+        />
+        <WorkExperience
+          userExperience={userExperience}
+          onNewExperienceBlock={this.props.handleNewExperienceBlock}
+          handleChanges={this.props.handleExperienceChanges}
+          step={5}
         />
       </>
     );

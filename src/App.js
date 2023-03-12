@@ -14,6 +14,15 @@ const education = {
   date: "",
 };
 
+const experience = {
+  position: "",
+  company: "",
+  location: "",
+  from: "",
+  to: "",
+  details: "",
+};
+
 class App extends Component {
   state = {
     isPreviewActive: false,
@@ -31,6 +40,7 @@ class App extends Component {
     skills: ["", "", ""],
     languages: [{ ...language }, { ...language }],
     education: [{ ...education }],
+    experience: [{ ...experience }],
   };
 
   togglePreview = (value) => {
@@ -60,7 +70,7 @@ class App extends Component {
 
   updateOrDeleteEducation = (id, field, value) => {
     // Modify value
-    if (value) {
+    if (value || value === "") {
       const updatedEducation = this.state.education.map((education, index) => {
         if (id === index) {
           return {
@@ -84,6 +94,43 @@ class App extends Component {
     this.setState({
       ...this.state,
       education: updatedEducation,
+    });
+  };
+
+  handleNewExperienceBlock = () => {
+    const updatedExperience = [{ ...experience }, ...this.state.experience];
+    this.setState({
+      ...this.state,
+      experience: updatedExperience,
+    });
+  };
+
+  updateOrDeleteExperience = (id, field, value) => {
+    // Modify value
+    if (value || value === "") {
+      const updatedExperience = this.state.experience.map((experience, index) => {
+        if (id === index) {
+          return {
+            ...experience,
+            [field]: value,
+          };
+        }
+        return experience;
+      });
+
+      return this.setState({
+        ...this.state,
+        experience: updatedExperience,
+      });
+    }
+
+    // Delete
+    const updatedExperience = [...this.state.experience];
+    updatedExperience.splice(id, 1);
+
+    this.setState({
+      ...this.state,
+      experience: updatedExperience,
     });
   };
 
@@ -122,7 +169,7 @@ class App extends Component {
 
   handleModifyLanguage = (id, field, value) => {
     // Modify value
-    if (value) {
+    if (value || value === "") {
       const updatedLanguages = this.state.languages.map((language, index) => {
         if (id === index) {
           return {
@@ -159,9 +206,12 @@ class App extends Component {
         userSkills={this.state.skills}
         userLanguages={this.state.languages}
         userEducation={this.state.education}
+        userExperience={this.state.experience}
         handlePersonalChanges={this.handlePersonalChanges}
         handleNewEducationBlock={this.handleNewEducationBlock}
         handleEducationChanges={this.updateOrDeleteEducation}
+        handleNewExperienceBlock={this.handleNewExperienceBlock}
+        handleExperienceChanges={this.updateOrDeleteExperience}
         handleNewSkill={this.handleNewSkill}
         handleEditSkill={this.handleEditSkill}
         handleDeleteSkill={this.handleDeleteSkill}
