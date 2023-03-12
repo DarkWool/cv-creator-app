@@ -1,10 +1,10 @@
 import "../styles/CVForm.css";
 import { Component } from "react";
-import { GeneralInfo } from "./GeneralInfo";
-import { Skills } from "./Skills";
-import { Languages } from "./Languages";
-import { Education } from "./Education";
-import { WorkExperience } from "./WorkExperience";
+import { GeneralInfo } from "./cv-edit-form/GeneralInfo";
+import { Skills } from "./cv-edit-form/Skills";
+import { Languages } from "./cv-edit-form/Languages";
+import { Education } from "./cv-edit-form/Education";
+import { WorkExperience } from "./cv-edit-form/WorkExperience";
 
 export class CVForm extends Component {
   constructor(props) {
