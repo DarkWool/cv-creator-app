@@ -8,6 +8,12 @@ const language = {
   proficiency: "null",
 };
 
+const education = {
+  school: "",
+  degree: "",
+  date: "",
+};
+
 class App extends Component {
   state = {
     isPreviewActive: false,
@@ -24,6 +30,7 @@ class App extends Component {
     },
     skills: ["", "", ""],
     languages: [{ ...language }, { ...language }],
+    education: [{ ...education }],
   };
 
   togglePreview = (value) => {
@@ -40,6 +47,43 @@ class App extends Component {
         ...this.state.personalInfo,
         [field]: value,
       },
+    });
+  };
+
+  handleNewEducationBlock = () => {
+    const updatedEducation = [{ ...education }, ...this.state.education];
+    this.setState({
+      ...this.state,
+      education: updatedEducation,
+    });
+  };
+
+  updateOrDeleteEducation = (id, field, value) => {
+    // Modify value
+    if (value) {
+      const updatedEducation = this.state.education.map((education, index) => {
+        if (id === index) {
+          return {
+            ...education,
+            [field]: value,
+          };
+        }
+        return education;
+      });
+
+      return this.setState({
+        ...this.state,
+        education: updatedEducation,
+      });
+    }
+
+    // Delete
+    const updatedEducation = [...this.state.education];
+    updatedEducation.splice(id, 1);
+
+    this.setState({
+      ...this.state,
+      education: updatedEducation,
     });
   };
 
@@ -114,7 +158,10 @@ class App extends Component {
         personalInfo={this.state.personalInfo}
         userSkills={this.state.skills}
         userLanguages={this.state.languages}
+        userEducation={this.state.education}
         handlePersonalChanges={this.handlePersonalChanges}
+        handleNewEducationBlock={this.handleNewEducationBlock}
+        handleEducationChanges={this.updateOrDeleteEducation}
         handleNewSkill={this.handleNewSkill}
         handleEditSkill={this.handleEditSkill}
         handleDeleteSkill={this.handleDeleteSkill}

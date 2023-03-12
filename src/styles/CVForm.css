@@ -1,10 +1,15 @@
 input,
 textarea {
+  width: 100%;
   background-color: hsl(263.1, 100%, 94.9%);
   appearance: none;
   border: 0;
-  padding: 10px 10px;
+  padding: 8px 10px;
   border: 1px solid #d1b6ff;
+}
+
+label {
+  font-weight: 500;
 }
 
 .edit-block_header {
@@ -44,15 +49,29 @@ textarea {
   font-weight: bold;
 }
 
+.edit-block_form-entry,
 .edit-block_form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding: 35px;
+}
+
+.edit-block_form-entry {
+  align-items: end;
+}
+
+.edit-block_form {
+  padding: 30px 35px;
   font-size: 1.4rem;
   border: 2px solid hsla(266, 24%, 92%, 1);
   border-radius: 20px;
   background-color: hsl(264, 100%, 99%);
+}
+
+.edit-block_separator {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 1px solid hsl(267, 100%, 94%);
 }
 
 .input-wrapper {
@@ -69,4 +88,15 @@ textarea {
 .flex-2-rows {
   display: flex;
   gap: 30px;
+  width: 100%;
+}
+
+.btn-delete {
+  appearance: none;
+  border: none;
+  padding: 10px 20px;
+  background-color: #202020;
+  color: white;
+  font-weight: 500;
+  border-radius: 4px;
 }
