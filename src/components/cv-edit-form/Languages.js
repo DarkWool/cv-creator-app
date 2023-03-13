@@ -21,18 +21,24 @@ export class Languages extends Component {
         <FormContainer>
           {userLanguages.map((language, index) => {
             return (
-              <div className="input-wrapper row">
+              <div className="input-wrapper row" key={language.id}>
+                <label htmlFor={`lang${index}`}></label>
                 <input
                   type="text"
                   placeholder="New language..."
+                  id={`lang${index}`}
+                  name={`lang${index}`}
+                  aria-label="Language"
                   value={language.lang}
-                  onChange={(e) => onModifyLanguage(index, "lang", e.target.value)}
+                  onChange={(e) => onModifyLanguage(language.id, "lang", e.target.value)}
                 />
+                <label htmlFor={`langProficiency${index}`}></label>
                 <select
                   value={language.proficiency}
-                  onChange={(e) => onModifyLanguage(index, "proficiency", e.target.value)}
+                  onChange={(e) => onModifyLanguage(language.id, "proficiency", e.target.value)}
                   id={`langProficiency${index}`}
                   name={`langProficiency${index}`}
+                  aria-label="Select language proficiency"
                 >
                   <option value="null" disabled>
                     Select language proficiency
@@ -43,8 +49,9 @@ export class Languages extends Component {
                   <option value="fullProfessional">Full Professional</option>
                   <option value="native">Native / Bilingual</option>
                 </select>
+
                 {userLanguages.length > 1 && (
-                  <button type="button" onClick={() => onModifyLanguage(index)}>
+                  <button type="button" onClick={() => onModifyLanguage(language.id)}>
                     Delete
                   </button>
                 )}

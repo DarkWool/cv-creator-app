@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, Fragment } from "react";
 import { FormHeader } from "./FormHeader";
 import { FormContainer } from "./FormContainer";
 
@@ -20,74 +20,74 @@ export class WorkExperience extends Component {
           clickHandler={onNewExperienceBlock}
         />
         <FormContainer>
-          {userExperience.map((experience, index) => {
+          {userExperience.map((exp, index) => {
             return (
-              <>
+              <Fragment key={exp.id}>
                 <div className="edit-block_form-entry">
                   <div className="flex-2-rows">
                     <div className="input-wrapper">
-                      <label htmlFor="cvPosition">Your Position</label>
+                      <label htmlFor={`cvPosition${index}`}>Your Position</label>
                       <input
-                        id="cvPosition"
-                        name="cvPosition"
+                        id={`cvPosition${index}`}
+                        name={`cvPosition${index}`}
                         type="text"
-                        value={experience.position}
-                        onChange={(e) => handleChanges(index, "position", e.target.value)}
+                        value={exp.position}
+                        onChange={(e) => handleChanges(exp.id, "position", e.target.value)}
                       />
                     </div>
                     <div className="input-wrapper">
-                      <label htmlFor="cvCompany">Company</label>
+                      <label htmlFor={`cvCompany${index}`}>Company</label>
                       <input
-                        id="cvCompany"
-                        name="cvCompany"
+                        id={`cvCompany${index}`}
+                        name={`cvCompany${index}`}
                         type="text"
-                        value={experience.company}
-                        onChange={(e) => handleChanges(index, "company", e.target.value)}
+                        value={exp.company}
+                        onChange={(e) => handleChanges(exp.id, "company", e.target.value)}
                       />
                     </div>
                   </div>
                   <div className="flex-2-rows">
                     <div className="input-wrapper">
-                      <label htmlFor="cvLocation">Location</label>
+                      <label htmlFor={`cvLocation${index}`}>Location</label>
                       <input
-                        id="cvLocation"
-                        name="cvLocation"
+                        id={`cvLocation${index}`}
+                        name={`cvLocation${index}`}
                         type="text"
-                        value={experience.location}
-                        onChange={(e) => handleChanges(index, "location", e.target.value)}
+                        value={exp.location}
+                        onChange={(e) => handleChanges(exp.id, "location", e.target.value)}
                       />
                     </div>
                     <div className="flex-2-rows">
                       <div className="input-wrapper">
-                        <label htmlFor="cvExperienceFrom">From</label>
+                        <label htmlFor={`cvExperienceFrom${index}`}>From</label>
                         <input
-                          id="cvExperienceFrom"
-                          name="cvExperienceFrom"
+                          id={`cvExperienceFrom${index}`}
+                          name={`cvExperienceFrom${index}`}
                           type="text"
-                          value={experience.from}
-                          onChange={(e) => handleChanges(index, "from", e.target.value)}
+                          value={exp.from}
+                          onChange={(e) => handleChanges(exp.id, "from", e.target.value)}
                         />
                       </div>
                       <div className="input-wrapper">
-                        <label htmlFor="cvExperienceTo">To</label>
+                        <label htmlFor={`cvExperienceTo${index}`}>To</label>
                         <input
-                          id="cvExperienceTo"
-                          name="cvExperienceTo"
+                          id={`cvExperienceTo${index}`}
+                          name={`cvExperienceTo${index}`}
                           type="text"
-                          value={experience.to}
-                          onChange={(e) => handleChanges(index, "to", e.target.value)}
+                          value={exp.to}
+                          onChange={(e) => handleChanges(exp.id, "to", e.target.value)}
                         />
                       </div>
                     </div>
                   </div>
                   <div className="input-wrapper">
-                    <label htmlFor="cvJobDetails">Tasks / Achievements</label>
+                    <label htmlFor={`cvJobDetails${index}`}>Tasks / Achievements</label>
                     <textarea
-                      id="cvJobDetails"
-                      name="cvJobDetails"
-                      value={experience.details}
+                      id={`cvJobDetails${index}`}
+                      name={`cvJobDetails${index}`}
+                      value={exp.details}
                       rows={5}
-                      onChange={(e) => handleChanges(index, "details", e.target.value)}
+                      onChange={(e) => handleChanges(exp.id, "details", e.target.value)}
                     />
                   </div>
 
@@ -95,7 +95,7 @@ export class WorkExperience extends Component {
                     <button
                       type="button"
                       className="btn-delete"
-                      onClick={() => handleChanges(index)}
+                      onClick={() => handleChanges(exp.id)}
                     >
                       Delete Entry
                     </button>
@@ -103,7 +103,7 @@ export class WorkExperience extends Component {
                 </div>
 
                 {index !== experienceBlocks - 1 && <hr className="edit-block_separator"></hr>}
-              </>
+              </Fragment>
             );
           })}
         </FormContainer>

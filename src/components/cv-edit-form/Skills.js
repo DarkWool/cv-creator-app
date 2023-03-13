@@ -21,15 +21,18 @@ export class Skills extends Component {
         <FormContainer>
           {userSkills.map((skill, index) => {
             return (
-              <div className="input-wrapper row">
+              <div className="input-wrapper row" key={skill.id}>
+                <label htmlFor={`cvSkill${index}`}></label>
                 <input
                   type="text"
                   placeholder="New skill..."
-                  value={skill}
-                  onChange={(e) => onEditSkill(index, e.target.value)}
+                  id={`cvSkill${index}`}
+                  name={`cvSkill${index}`}
+                  value={skill.value}
+                  onChange={(e) => onEditSkill(skill.id, e.target.value)}
                 />
                 {userSkills.length > 1 && (
-                  <button type="button" onClick={() => onDeleteSkill(index)}>
+                  <button type="button" onClick={() => onDeleteSkill(skill.id)}>
                     Delete
                   </button>
                 )}

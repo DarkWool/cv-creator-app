@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, Fragment } from "react";
 import { FormHeader } from "./FormHeader";
 import { FormContainer } from "./FormContainer";
 
@@ -22,37 +22,37 @@ export class Education extends Component {
         <FormContainer>
           {userEducation.map((education, index) => {
             return (
-              <>
+              <Fragment key={education.id}>
                 <div className="edit-block_form-entry">
                   <div className="flex-2-rows">
                     <div className="input-wrapper">
-                      <label htmlFor="cvSchool">School name</label>
+                      <label htmlFor={`cvSchool${index}`}>School name</label>
                       <input
-                        id="cvSchool"
-                        name="cvSchool"
+                        id={`cvSchool${index}`}
+                        name={`cvSchool${index}`}
                         type="text"
-                        onChange={(e) => handleChanges(index, "school", e.target.value)}
+                        onChange={(e) => handleChanges(education.id, "school", e.target.value)}
                         value={education.school}
                       />
                     </div>
                     <div className="input-wrapper">
-                      <label htmlFor="cvDegree">Degree, certificacion or title</label>
+                      <label htmlFor={`cvDegree${index}`}>Degree, certificacion or title</label>
                       <input
-                        id="cvDegree"
-                        name="cvDegree"
+                        id={`cvDegree${index}`}
+                        name={`cvDegree${index}`}
                         type="text"
-                        onChange={(e) => handleChanges(index, "degree", e.target.value)}
+                        onChange={(e) => handleChanges(education.id, "degree", e.target.value)}
                         value={education.degree}
                       />
                     </div>
                   </div>
                   <div className="input-wrapper">
-                    <label htmlFor="cvDate">Date</label>
+                    <label htmlFor={`cvDate${index}`}>Date</label>
                     <input
-                      id="cvDate"
-                      name="cvDate"
+                      id={`cvDate${index}`}
+                      name={`cvDate${index}`}
                       type="date"
-                      onChange={(e) => handleChanges(index, "date", e.target.value)}
+                      onChange={(e) => handleChanges(education.id, "date", e.target.value)}
                       value={education.date}
                     />
                   </div>
@@ -61,14 +61,14 @@ export class Education extends Component {
                     <button
                       type="button"
                       className="btn-delete"
-                      onClick={() => handleChanges(index)}
+                      onClick={() => handleChanges(education.id)}
                     >
                       Delete Entry
                     </button>
                   )}
                 </div>
                 {index !== educationBlocks - 1 && <hr className="edit-block_separator"></hr>}
-              </>
+              </Fragment>
             );
           })}
         </FormContainer>

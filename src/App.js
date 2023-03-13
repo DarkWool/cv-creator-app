@@ -2,19 +2,23 @@ import React, { Component } from "react";
 import { Header } from "./components/Header";
 import { CVForm } from "./components/CVForm";
 import { CVPreview } from "./components/CVPreview";
+import uniqid from "uniqid";
 
 const language = {
+  id: "",
   lang: "",
   proficiency: "null",
 };
 
 const education = {
+  id: "",
   school: "",
   degree: "",
   date: "",
 };
 
 const experience = {
+  id: "",
   position: "",
   company: "",
   location: "",
@@ -37,10 +41,17 @@ class App extends Component {
       email: "",
       phoneNumber: "",
     },
-    skills: ["", "", ""],
-    languages: [{ ...language }, { ...language }],
-    education: [{ ...education }],
-    experience: [{ ...experience }],
+    skills: [
+      { id: uniqid(), value: "" },
+      { id: uniqid(), value: "" },
+      { id: uniqid(), value: "" },
+    ],
+    languages: [
+      { ...language, id: uniqid() },
+      { ...language, id: uniqid() },
+    ],
+    education: [{ ...education, id: uniqid() }],
+    experience: [{ ...experience, id: uniqid() }],
   };
 
   togglePreview = (value) => {
@@ -61,7 +72,7 @@ class App extends Component {
   };
 
   handleNewEducationBlock = () => {
-    const updatedEducation = [{ ...education }, ...this.state.education];
+    const updatedEducation = [{ ...education, id: uniqid() }, ...this.state.education];
     this.setState({
       ...this.state,
       education: updatedEducation,
@@ -71,8 +82,8 @@ class App extends Component {
   updateOrDeleteEducation = (id, field, value) => {
     // Modify value
     if (value || value === "") {
-      const updatedEducation = this.state.education.map((education, index) => {
-        if (id === index) {
+      const updatedEducation = this.state.education.map((education) => {
+        if (id === education.id) {
           return {
             ...education,
             [field]: value,
@@ -88,9 +99,7 @@ class App extends Component {
     }
 
     // Delete
-    const updatedEducation = [...this.state.education];
-    updatedEducation.splice(id, 1);
-
+    const updatedEducation = this.state.education.filter((education) => education.id !== id);
     this.setState({
       ...this.state,
       education: updatedEducation,
@@ -98,7 +107,7 @@ class App extends Component {
   };
 
   handleNewExperienceBlock = () => {
-    const updatedExperience = [{ ...experience }, ...this.state.experience];
+    const updatedExperience = [{ ...experience, id: uniqid() }, ...this.state.experience];
     this.setState({
       ...this.state,
       experience: updatedExperience,
@@ -108,8 +117,8 @@ class App extends Component {
   updateOrDeleteExperience = (id, field, value) => {
     // Modify value
     if (value || value === "") {
-      const updatedExperience = this.state.experience.map((experience, index) => {
-        if (id === index) {
+      const updatedExperience = this.state.experience.map((experience) => {
+        if (id === experience.id) {
           return {
             ...experience,
             [field]: value,
@@ -125,9 +134,7 @@ class App extends Component {
     }
 
     // Delete
-    const updatedExperience = [...this.state.experience];
-    updatedExperience.splice(id, 1);
-
+    const updatedExperience = this.state.experience.filter((exp) => id !== exp.id);
     this.setState({
       ...this.state,
       experience: updatedExperience,
@@ -135,7 +142,7 @@ class App extends Component {
   };
 
   handleNewSkill = () => {
-    const skills = ["", ...this.state.skills];
+    const skills = [{ id: uniqid(), value: "" }, ...this.state.skills];
     this.setState({
       ...this.state,
       skills,
@@ -143,8 +150,17 @@ class App extends Component {
   };
 
   handleEditSkill = (id, value) => {
-    const skills = this.state.skills;
-    skills[id] = value;
+    const skills = this.state.skills.map((skill) => {
+      if (skill.id === id) {
+        return {
+          ...skill,
+          value,
+        };
+      }
+
+      return skill;
+    });
+
     this.setState({
       ...this.state,
       skills,
@@ -152,7 +168,7 @@ class App extends Component {
   };
 
   handleDeleteSkill = (id) => {
-    const skills = this.state.skills.filter((skill, index) => index !== id);
+    const skills = this.state.skills.filter((skill) => id !== skill.id);
     this.setState({
       ...this.state,
       skills,
@@ -160,7 +176,7 @@ class App extends Component {
   };
 
   handleNewLanguage = () => {
-    const languages = [{ ...language }, ...this.state.languages];
+    const languages = [{ ...language, id: uniqid() }, ...this.state.languages];
     this.setState({
       ...this.state,
       languages,
@@ -170,8 +186,8 @@ class App extends Component {
   handleModifyLanguage = (id, field, value) => {
     // Modify value
     if (value || value === "") {
-      const updatedLanguages = this.state.languages.map((language, index) => {
-        if (id === index) {
+      const updatedLanguages = this.state.languages.map((language) => {
+        if (id === language.id) {
           return {
             ...language,
             [field]: value,
@@ -189,8 +205,7 @@ class App extends Component {
     }
 
     // Remove
-    const languages = [...this.state.languages];
-    languages.splice(id, 1);
+    const languages = this.state.languages.filter((language) => language.id !== id);
     this.setState({
       ...this.state,
       languages,
