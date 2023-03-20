@@ -5,6 +5,7 @@ import { Skills } from "./cv-edit-form/Skills";
 import { Languages } from "./cv-edit-form/Languages";
 import { Education } from "./cv-edit-form/Education";
 import { WorkExperience } from "./cv-edit-form/WorkExperience";
+import { Interests } from "./cv-edit-form/Interests";
 
 export class CVForm extends Component {
   constructor(props) {
@@ -12,7 +13,14 @@ export class CVForm extends Component {
   }
 
   render() {
-    const { personalInfo, userSkills, userLanguages, userEducation, userExperience } = this.props;
+    const {
+      personalInfo,
+      userSkills,
+      userLanguages,
+      userEducation,
+      userExperience,
+      userInterests,
+    } = this.props;
 
     return (
       <>
@@ -53,6 +61,12 @@ export class CVForm extends Component {
           onNewExperienceBlock={this.props.handleNewExperienceBlock}
           handleChanges={this.props.handleExperienceChanges}
           step={5}
+        />
+        <Interests
+          userInterests={userInterests}
+          onNewInterest={this.props.handleNewInterest}
+          handleChanges={this.props.handleInterestsChanges}
+          step={6}
         />
       </>
     );

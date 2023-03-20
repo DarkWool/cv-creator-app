@@ -12,6 +12,14 @@ label {
   font-weight: 500;
 }
 
+.edit-block {
+  position: relative;
+}
+
+.edit-block + .edit-block {
+  margin-top: 64px;
+}
+
 .edit-block_header {
   display: grid;
   grid-template-columns: 40% 1fr;
@@ -29,6 +37,7 @@ label {
 }
 
 .edit-block_step {
+  position: relative;
   background-color: var(--accentColor);
   font-size: 24px;
   font-weight: 700;

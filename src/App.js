@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Header } from "./components/Header";
 import { CVForm } from "./components/CVForm";
 import { CVPreview } from "./components/CVPreview";
+import { init } from "emoji-mart";
+import data from "@emoji-mart/data";
 import uniqid from "uniqid";
 
 const language = {
@@ -25,6 +27,12 @@ const experience = {
   from: "",
   to: "",
   details: "",
+};
+
+const interest = {
+  id: "",
+  iconId: "helmet_with_white_cross",
+  value: "",
 };
 
 class App extends Component {
@@ -52,6 +60,10 @@ class App extends Component {
     ],
     education: [{ ...education, id: uniqid() }],
     experience: [{ ...experience, id: uniqid() }],
+    interests: [
+      { ...interest, id: uniqid() },
+      { ...interest, id: uniqid() },
+    ],
   };
 
   togglePreview = (value) => {
@@ -212,6 +224,39 @@ class App extends Component {
     });
   };
 
+  handleNewInterest = () => {
+    this.setState({
+      ...this.state,
+      interests: [{ ...interest, id: uniqid() }, ...this.state.interests],
+    });
+  };
+
+  updateOrDeleteInterest = (id, field, value) => {
+    if (value || value === "") {
+      const newInterests = this.state.interests.map((interest) => {
+        if (id === interest.id) {
+          return {
+            ...interest,
+            [field]: value,
+          };
+        } else return interest;
+      });
+
+      this.setState({
+        ...this.state,
+        interests: newInterests,
+      });
+      return;
+    }
+
+    // Delete interest
+    const updatedInterests = this.state.interests.filter((interest) => id !== interest.id);
+    this.setState({
+      ...this.state,
+      interests: updatedInterests,
+    });
+  };
+
   render() {
     const currPage = this.state.isPreviewActive ? (
       <CVPreview personalInfo={this.state.personalInfo} />
@@ -222,16 +267,19 @@ class App extends Component {
         userLanguages={this.state.languages}
         userEducation={this.state.education}
         userExperience={this.state.experience}
+        userInterests={this.state.interests}
         handlePersonalChanges={this.handlePersonalChanges}
         handleNewEducationBlock={this.handleNewEducationBlock}
         handleEducationChanges={this.updateOrDeleteEducation}
         handleNewExperienceBlock={this.handleNewExperienceBlock}
         handleExperienceChanges={this.updateOrDeleteExperience}
+        handleInterestsChanges={this.updateOrDeleteInterest}
         handleNewSkill={this.handleNewSkill}
         handleEditSkill={this.handleEditSkill}
         handleDeleteSkill={this.handleDeleteSkill}
         handleNewLanguage={this.handleNewLanguage}
         handleModifyLanguage={this.handleModifyLanguage}
+        handleNewInterest={this.handleNewInterest}
       />
     );
 
@@ -243,5 +291,8 @@ class App extends Component {
     );
   }
 }
+
+// Initialize emoji-mart
+init({ data });
 
 export default App;
