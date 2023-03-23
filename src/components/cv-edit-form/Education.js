@@ -33,15 +33,28 @@ export function Education({ step, data, onAddEducation, onChange, onDeleteEntry 
             </InputWrapper>
           </div>
 
-          <InputWrapper>
-            <Input
-              label="Date"
-              id={`cvDate${index}`}
-              type="date"
-              value={education.date}
-              onChange={(e) => onChange(education.id, "date", e.target.value)}
-            />
-          </InputWrapper>
+          <div className="flex-2-rows">
+            <InputWrapper>
+              <Input
+                label="Starting date"
+                id={`cvEducationFrom${index}`}
+                type="text"
+                value={education.from}
+                onChange={(e) => onChange(education.id, "from", e.target.value)}
+                placeholder="MM/YYYY"
+              />
+            </InputWrapper>
+            <InputWrapper>
+              <Input
+                label="Ending date"
+                id={`cvEducationTo${index}`}
+                type="text"
+                value={education.to}
+                onChange={(e) => onChange(education.id, "to", e.target.value)}
+                placeholder="MM/YYYY"
+              />
+            </InputWrapper>
+          </div>
 
           {entries > 1 && (
             <button

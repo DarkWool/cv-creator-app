@@ -4,7 +4,7 @@ export function CVPreview({ personalInfo }) {
       <p>
         <strong>Name:</strong>
       </p>
-      <p>{personalInfo.name.trim()}</p>
+      <p>{personalInfo.firstName.trim()}</p>
       <p>
         <strong>Last Name:</strong>
       </p>

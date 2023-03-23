@@ -12,11 +12,11 @@ export function GeneralInfo({ step, data, onChange }) {
         <div className="flex-2-rows">
           <InputWrapper>
             <Input
-              label="Name"
-              id="cvName"
+              label="First name"
+              id="cvFirstName"
               type="text"
-              value={data.name}
-              onChange={(e) => onChange("name", e.target.value)}
+              value={data.firstName}
+              onChange={(e) => onChange("firstName", e.target.value)}
             />
           </InputWrapper>
           <InputWrapper>
@@ -37,15 +37,17 @@ export function GeneralInfo({ step, data, onChange }) {
             type="text"
             value={data.profession}
             onChange={(e) => onChange("profession", e.target.value)}
+            placeholder="e.g.  Web Developer"
           />
         </InputWrapper>
         <InputWrapper>
           <Input
-            label="Address"
+            label="City and Country"
             id="cvAddress"
             type="text"
             value={data.address}
             onChange={(e) => onChange("address", e.target.value)}
+            placeholder="e.g.  Atlanta, USA"
           />
         </InputWrapper>
 
@@ -57,15 +59,17 @@ export function GeneralInfo({ step, data, onChange }) {
               type="text"
               value={data.linkedIn}
               onChange={(e) => onChange("linkedIn", e.target.value)}
+              placeholder="e.g.  johnsmith1234"
             />
           </InputWrapper>
           <InputWrapper>
             <Input
-              label="Portfolio"
+              label="Portfolio URL"
               id="cvPortfolio"
-              type="text"
+              type="url"
               value={data.portfolio}
               onChange={(e) => onChange("portfolio", e.target.value)}
+              placeholder="e.g.  https://github.com/DarkWool/"
             />
           </InputWrapper>
         </div>
@@ -78,6 +82,7 @@ export function GeneralInfo({ step, data, onChange }) {
               type="email"
               value={data.email}
               onChange={(e) => onChange("email", e.target.value)}
+              placeholder="e.g.  cv_maker@gmail.com"
             />
           </InputWrapper>
           <InputWrapper>
@@ -87,6 +92,7 @@ export function GeneralInfo({ step, data, onChange }) {
               type="tel"
               value={data.phoneNumber}
               onChange={(e) => onChange("phoneNumber", e.target.value)}
+              placeholder="e.g.  +52 1 55 1234 56789"
             />
           </InputWrapper>
         </div>
@@ -99,6 +105,7 @@ export function GeneralInfo({ step, data, onChange }) {
             onInputChange={(e) => onChange("aboutMe", e.target.value)}
             rows={8}
             resize="y"
+            placeholder="Tell us about yourself! This is your chance to showcase your skills, experience, and personality. Write a brief summary of who you are and what you can bring to the table."
           />
         </InputWrapper>
       </FormContainer>

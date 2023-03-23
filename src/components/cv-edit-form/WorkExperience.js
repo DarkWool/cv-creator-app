@@ -51,6 +51,7 @@ export function WorkExperience({ step, data, onAddExperience, onChange, onDelete
                   type="text"
                   value={exp.from}
                   onChange={(e) => onChange(exp.id, "from", e.target.value)}
+                  placeholder="MM/YYYY"
                 />
               </InputWrapper>
               <InputWrapper>
@@ -60,6 +61,7 @@ export function WorkExperience({ step, data, onAddExperience, onChange, onDelete
                   type="text"
                   value={exp.to}
                   onChange={(e) => onChange(exp.id, "to", e.target.value)}
+                  placeholder="MM/YYYY"
                 />
               </InputWrapper>
             </div>
@@ -73,6 +75,7 @@ export function WorkExperience({ step, data, onAddExperience, onChange, onDelete
               onInputChange={(e) => onChange(exp.id, "details", e.target.value)}
               rows={5}
               resize="y"
+              placeholder="Describe your main tasks and responsibilities in this role, as well as any achievements or accomplishments you are particularly proud of. Be specific and use metrics or numbers to quantify your impact whenever possible."
             />
           </InputWrapper>
 

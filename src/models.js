@@ -1,7 +1,7 @@
 import uniqid from "uniqid";
 
 const personalData = {
-  name: "",
+  firstName: "",
   lastName: "",
   profession: "",
   aboutMe: "",
@@ -32,7 +32,8 @@ function createEducationEntry() {
     id: uniqid(),
     school: "",
     degree: "",
-    date: "",
+    from: "",
+    to: "",
   };
 }
 
@@ -55,6 +56,7 @@ function createInterest() {
     name: "",
   };
 }
+
 export {
   personalData,
   createEducationEntry,
