@@ -4,6 +4,8 @@ import { Input } from "../FormElements/Input";
 import { InputWrapper } from "../FormElements/InputWrapper";
 import { Select } from "../FormElements/Select";
 
+const PLACEHOLDERS = ["Spanish", "English", "Mandarin Chinese", "German", "Arabic", "Hindi"];
+
 export function Languages({ step, data, onAddLanguage, onChange, onDeleteEntry }) {
   const entries = data.length;
   const langProficiencyOptions = [
@@ -32,6 +34,9 @@ export function Languages({ step, data, onAddLanguage, onChange, onDeleteEntry }
                 type="text"
                 value={language.name}
                 onChange={(e) => onChange(language.id, "name", e.target.value)}
+                placeholder={
+                  PLACEHOLDERS[index] ? `e.g. ${PLACEHOLDERS[index]}` : "New language..."
+                }
               />
               <Select
                 id={`cvLangProficiency${index}`}

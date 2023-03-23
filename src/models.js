@@ -52,7 +52,7 @@ function createExperienceEntry() {
 function createInterest() {
   return {
     id: uniqid(),
-    iconId: "helmet_with_white_cross",
+    iconId: null,
     name: "",
   };
 }

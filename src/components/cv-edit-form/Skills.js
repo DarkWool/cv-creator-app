@@ -3,6 +3,17 @@ import { FormContainer } from "./FormContainer";
 import { Input } from "../FormElements/Input";
 import { InputWrapper } from "../FormElements/InputWrapper";
 
+const PLACEHOLDERS = [
+  "Strong communication",
+  "JavaScript",
+  "Adaptability",
+  "CSS",
+  "Python",
+  "Cybersecurity",
+  "Blender",
+  "Photoshop",
+];
+
 export function Skills({ step, data, onAddSkill, onChange, onDeleteEntry }) {
   const entries = data.length;
 
@@ -18,7 +29,7 @@ export function Skills({ step, data, onAddSkill, onChange, onDeleteEntry }) {
                 type="text"
                 value={skill.name}
                 onChange={(e) => onChange(skill.id, e.target.value)}
-                placeholder="Enter a new skill"
+                placeholder={PLACEHOLDERS[index] ? `e.g. ${PLACEHOLDERS[index]}` : "New skill..."}
               />
               {entries > 1 && (
                 <button type="button" onClick={() => onDeleteEntry(skill.id)}>

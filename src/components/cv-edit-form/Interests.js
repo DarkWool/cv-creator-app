@@ -6,6 +6,18 @@ import { InputWrapper } from "../FormElements/InputWrapper";
 import Picker from "@emoji-mart/react";
 
 const tooltipPosition = { top: null };
+const PLACEHOLDERS = [
+  { iconId: "airplane", name: "Traveling" },
+  { iconId: "closed_book", name: "Reading" },
+  { iconId: "basketball", name: "Basketball" },
+  { iconId: "notes", name: "Music" },
+  { iconId: "art", name: "Art" },
+  { iconId: "lower_left_ballpoint_pen", name: "Writing" },
+  { iconId: "helmet_with_white_cross", name: "Volunteer work" },
+  { iconId: "camera", name: "Photography" },
+  { iconId: "hiking_boot", name: "Hiking" },
+  { iconId: "bulb", name: "Technology" },
+];
 
 export function Interests({ step, data, onAddInterest, onChange, onDeleteEntry }) {
   const [isTooltipActive, setIsTooltipActive] = useState(false);
@@ -46,6 +58,13 @@ export function Interests({ step, data, onAddInterest, onChange, onDeleteEntry }
       />
       <FormContainer>
         {data.map((interest, index) => {
+          let iconId;
+          if (interest.iconId === null) {
+            iconId = PLACEHOLDERS[index] ? PLACEHOLDERS[index].iconId : "8ball";
+          } else {
+            iconId = interest.iconId;
+          }
+
           return (
             <InputWrapper variant="row" key={interest.id}>
               <button
@@ -56,16 +75,17 @@ export function Interests({ step, data, onAddInterest, onChange, onDeleteEntry }
                   setSelectedInterest(interest.id);
 
                   tooltipPosition.top = `${e.pageY}px`;
-                  tooltipPosition.left = `${e.pageX}px`;
                 }}
               >
-                <em-emoji id={interest.iconId} size="2em"></em-emoji>
+                <em-emoji id={iconId} size="2em"></em-emoji>
               </button>
 
               <Input
                 id={`cvInterest${index}`}
                 type="text"
-                placeholder="New interest..."
+                placeholder={
+                  PLACEHOLDERS[index] ? `e.g. ${PLACEHOLDERS[index].name}` : "New interest..."
+                }
                 value={interest.name}
                 onChange={(e) => onChange(interest.id, "name", e.target.value)}
               />
