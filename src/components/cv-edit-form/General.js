@@ -4,7 +4,7 @@ import { Input } from "../FormElements/Input";
 import { InputWrapper } from "../FormElements/InputWrapper";
 import { Textarea } from "../FormElements/Textarea";
 
-export function GeneralInfo({ step, data, onChange }) {
+export function General({ step, data, onChange }) {
   return (
     <section className="edit-block">
       <FormHeader step={step} title={"General Information"} />

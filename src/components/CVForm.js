@@ -1,5 +1,5 @@
 import "../styles/CVForm.css";
-import { GeneralInfo } from "./cv-edit-form/GeneralInfo";
+import { General } from "./cv-edit-form/General";
 import { Skills } from "./cv-edit-form/Skills";
 import { Languages } from "./cv-edit-form/Languages";
 import { Education } from "./cv-edit-form/Education";
@@ -9,7 +9,7 @@ import { Interests } from "./cv-edit-form/Interests";
 export function CVForm(props) {
   return (
     <>
-      <GeneralInfo step={1} data={props.personalData} onChange={props.onPersonalChanges} />
+      <General step={1} data={props.personalData} onChange={props.onPersonalChanges} />
       <Education
         step={2}
         data={props.educationData}
