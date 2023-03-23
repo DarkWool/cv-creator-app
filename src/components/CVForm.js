@@ -1,10 +1,10 @@
 import "../styles/CVForm.css";
-import { General } from "./cv-edit-form/General";
-import { Skills } from "./cv-edit-form/Skills";
-import { Languages } from "./cv-edit-form/Languages";
-import { Education } from "./cv-edit-form/Education";
-import { WorkExperience } from "./cv-edit-form/WorkExperience";
-import { Interests } from "./cv-edit-form/Interests";
+import { General } from "./CVEditForm/General";
+import { Skills } from "./CVEditForm/Skills";
+import { Languages } from "./CVEditForm/Languages";
+import { Education } from "./CVEditForm/Education";
+import { WorkExperience } from "./CVEditForm/WorkExperience";
+import { Interests } from "./CVEditForm/Interests";
 
 export function CVForm(props) {
   return (
