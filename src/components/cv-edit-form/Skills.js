@@ -1,46 +1,34 @@
-import { Component } from "react";
 import { FormHeader } from "./FormHeader";
 import { FormContainer } from "./FormContainer";
+import { Input } from "../FormElements/Input";
+import { InputWrapper } from "../FormElements/InputWrapper";
 
-export class Skills extends Component {
-  constructor(props) {
-    super(props);
-  }
+export function Skills({ step, data, onAddSkill, onChange, onDeleteEntry }) {
+  const entries = data.length;
 
-  render() {
-    const { userSkills, onNewSkill, onDeleteSkill, onEditSkill } = this.props;
-
-    return (
-      <section className="edit-block">
-        <FormHeader
-          step={this.props.step}
-          title={"Skills"}
-          buttonText={"Add Skill"}
-          clickHandler={onNewSkill}
-        />
-        <FormContainer>
-          {userSkills.map((skill, index) => {
-            return (
-              <div className="input-wrapper row" key={skill.id}>
-                <label htmlFor={`cvSkill${index}`}></label>
-                <input
-                  type="text"
-                  placeholder="New skill..."
-                  id={`cvSkill${index}`}
-                  name={`cvSkill${index}`}
-                  value={skill.value}
-                  onChange={(e) => onEditSkill(skill.id, e.target.value)}
-                />
-                {userSkills.length > 1 && (
-                  <button type="button" onClick={() => onDeleteSkill(skill.id)}>
-                    Delete
-                  </button>
-                )}
-              </div>
-            );
-          })}
-        </FormContainer>
-      </section>
-    );
-  }
+  return (
+    <section className="edit-block">
+      <FormHeader step={step} title={"Skills"} buttonText={"Add Skill"} clickHandler={onAddSkill} />
+      <FormContainer>
+        {data.map((skill, index) => {
+          return (
+            <InputWrapper variant="row" key={skill.id}>
+              <Input
+                id={`cvSkill${index}`}
+                type="text"
+                value={skill.name}
+                onChange={(e) => onChange(skill.id, e.target.value)}
+                placeholder="Enter a new skill"
+              />
+              {entries > 1 && (
+                <button type="button" onClick={() => onDeleteEntry(skill.id)}>
+                  Delete
+                </button>
+              )}
+            </InputWrapper>
+          );
+        })}
+      </FormContainer>
+    </section>
+  );
 }

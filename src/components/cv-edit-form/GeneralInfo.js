@@ -1,115 +1,107 @@
-import { Component } from "react";
 import { FormHeader } from "./FormHeader";
 import { FormContainer } from "./FormContainer";
+import { Input } from "../FormElements/Input";
+import { InputWrapper } from "../FormElements/InputWrapper";
+import { Textarea } from "../FormElements/Textarea";
 
-export class GeneralInfo extends Component {
-  constructor(props) {
-    super(props);
-  }
+export function GeneralInfo({ step, data, onChange }) {
+  return (
+    <section className="edit-block">
+      <FormHeader step={step} title={"General Information"} />
+      <FormContainer>
+        <div className="flex-2-rows">
+          <InputWrapper>
+            <Input
+              label="Name"
+              id="cvName"
+              type="text"
+              value={data.name}
+              onChange={(e) => onChange("name", e.target.value)}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <Input
+              label="Last Name"
+              id="cvLastName"
+              type="text"
+              value={data.lastName}
+              onChange={(e) => onChange("lastName", e.target.value)}
+            />
+          </InputWrapper>
+        </div>
 
-  render() {
-    return (
-      <section className="edit-block">
-        <FormHeader step={this.props.step} title={"General Information"} />
-        <FormContainer>
-          <div className="flex-2-rows">
-            <div className="input-wrapper">
-              <label htmlFor="cvName">Name</label>
-              <input
-                id="cvName"
-                name="cvName"
-                type="text"
-                onChange={(e) => this.props.handleChanges("name", e.target.value)}
-                value={this.props.name}
-              />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="cvLastName">Last Name</label>
-              <input
-                id="cvLastName"
-                name="cvLastName"
-                type="text"
-                onChange={(e) => this.props.handleChanges("lastName", e.target.value)}
-                value={this.props.lastName}
-              />
-            </div>
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="cvProfession">Profession</label>
-            <input
-              id="cvProfession"
-              name="cvProfession"
+        <InputWrapper>
+          <Input
+            label="Profession"
+            id="cvProfession"
+            type="text"
+            value={data.profession}
+            onChange={(e) => onChange("profession", e.target.value)}
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <Input
+            label="Address"
+            id="cvAddress"
+            type="text"
+            value={data.address}
+            onChange={(e) => onChange("address", e.target.value)}
+          />
+        </InputWrapper>
+
+        <div className="flex-2-rows">
+          <InputWrapper>
+            <Input
+              label="LinkedIn Profile"
+              id="cvLinkedIn"
               type="text"
-              onChange={(e) => this.props.handleChanges("profession", e.target.value)}
-              value={this.props.profession}
+              value={data.linkedIn}
+              onChange={(e) => onChange("linkedIn", e.target.value)}
             />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="cvAddress">Address</label>
-            <input
-              id="cvAddress"
-              name="cvAddress"
+          </InputWrapper>
+          <InputWrapper>
+            <Input
+              label="Portfolio"
+              id="cvPortfolio"
               type="text"
-              onChange={(e) => this.props.handleChanges("address", e.target.value)}
-              value={this.props.address}
+              value={data.portfolio}
+              onChange={(e) => onChange("portfolio", e.target.value)}
             />
-          </div>
-          <div className="flex-2-rows">
-            <div className="input-wrapper">
-              <label htmlFor="cvLinkedIn">LinkedIn Profile</label>
-              <input
-                id="cvLinkedIn"
-                name="cvLinkedIn"
-                type="text"
-                onChange={(e) => this.props.handleChanges("linkedIn", e.target.value)}
-                value={this.props.linkedIn}
-              />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="cvPortfolio">Portfolio</label>
-              <input
-                id="cvPortfolio"
-                name="cvPortfolio"
-                type="url"
-                onChange={(e) => this.props.handleChanges("portfolio", e.target.value)}
-                value={this.props.portfolio}
-              />
-            </div>
-          </div>
-          <div className="flex-2-rows">
-            <div className="input-wrapper">
-              <label htmlFor="cvEmail">Email</label>
-              <input
-                id="cvEmail"
-                name="cvEmail"
-                type="email"
-                onChange={(e) => this.props.handleChanges("email", e.target.value)}
-                value={this.props.email}
-              />
-            </div>
-            <div className="input-wrapper">
-              <label htmlFor="cvPhoneNumber">Phone number</label>
-              <input
-                id="cvPhoneNumber"
-                name="cvPhoneNumber"
-                type="tel"
-                onChange={(e) => this.props.handleChanges("phoneNumber", e.target.value)}
-                value={this.props.phoneNumber}
-              />
-            </div>
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="cvAboutMe">Description (About me)</label>
-            <textarea
-              id="cvAboutMe"
-              name="cvAboutMe"
-              rows="8"
-              onChange={(e) => this.props.handleChanges("aboutMe", e.target.value)}
-              value={this.props.aboutMe}
+          </InputWrapper>
+        </div>
+
+        <div className="flex-2-rows">
+          <InputWrapper>
+            <Input
+              label="Email"
+              id="cvEmail"
+              type="email"
+              value={data.email}
+              onChange={(e) => onChange("email", e.target.value)}
             />
-          </div>
-        </FormContainer>
-      </section>
-    );
-  }
+          </InputWrapper>
+          <InputWrapper>
+            <Input
+              label="Phone number"
+              id="cvPhoneNumber"
+              type="tel"
+              value={data.phoneNumber}
+              onChange={(e) => onChange("phoneNumber", e.target.value)}
+            />
+          </InputWrapper>
+        </div>
+
+        <InputWrapper>
+          <Textarea
+            label="Description (About me)"
+            id="cvAboutMe"
+            value={data.aboutMe}
+            onInputChange={(e) => onChange("aboutMe", e.target.value)}
+            rows={8}
+            resize="y"
+          />
+        </InputWrapper>
+      </FormContainer>
+    </section>
+  );
 }

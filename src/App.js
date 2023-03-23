@@ -1,295 +1,167 @@
-import React, { Component } from "react";
+import * as models from "./models";
+import { useState } from "react";
 import { Header } from "./components/Header";
 import { CVForm } from "./components/CVForm";
 import { CVPreview } from "./components/CVPreview";
 import { init } from "emoji-mart";
 import data from "@emoji-mart/data";
-import uniqid from "uniqid";
 
-const language = {
-  id: "",
-  lang: "",
-  proficiency: "null",
-};
+function App() {
+  const [isPreviewActive, setIsPreviewActive] = useState(false);
+  const [personalData, setPersonalData] = useState(models.personalData);
+  const [educationData, setEducationData] = useState([models.createEducationEntry()]);
+  const [workData, setWorkData] = useState([models.createExperienceEntry()]);
+  const [skills, setSkills] = useState([models.createSkill(), models.createSkill()]);
+  const [languages, setLanguages] = useState([models.createLanguage()]);
+  const [interests, setInterests] = useState([models.createInterest()]);
 
-const education = {
-  id: "",
-  school: "",
-  degree: "",
-  date: "",
-};
+  const togglePreview = (value) => setIsPreviewActive(value);
 
-const experience = {
-  id: "",
-  position: "",
-  company: "",
-  location: "",
-  from: "",
-  to: "",
-  details: "",
-};
-
-const interest = {
-  id: "",
-  iconId: "helmet_with_white_cross",
-  value: "",
-};
-
-class App extends Component {
-  state = {
-    isPreviewActive: false,
-    personalInfo: {
-      name: "",
-      lastName: "",
-      profession: "",
-      aboutMe: "",
-      address: "",
-      linkedIn: "",
-      portfolio: "",
-      email: "",
-      phoneNumber: "",
-    },
-    skills: [
-      { id: uniqid(), value: "" },
-      { id: uniqid(), value: "" },
-      { id: uniqid(), value: "" },
-    ],
-    languages: [
-      { ...language, id: uniqid() },
-      { ...language, id: uniqid() },
-    ],
-    education: [{ ...education, id: uniqid() }],
-    experience: [{ ...experience, id: uniqid() }],
-    interests: [
-      { ...interest, id: uniqid() },
-      { ...interest, id: uniqid() },
-    ],
-  };
-
-  togglePreview = (value) => {
-    this.setState({
-      ...this.state,
-      isPreviewActive: value,
+  // Personal Data
+  function handlePersonalDataChanges(field, value) {
+    setPersonalData({
+      ...personalData,
+      [field]: value,
     });
-  };
-
-  handlePersonalChanges = (field, value) => {
-    this.setState({
-      ...this.state,
-      personalInfo: {
-        ...this.state.personalInfo,
-        [field]: value,
-      },
-    });
-  };
-
-  handleNewEducationBlock = () => {
-    const updatedEducation = [{ ...education, id: uniqid() }, ...this.state.education];
-    this.setState({
-      ...this.state,
-      education: updatedEducation,
-    });
-  };
-
-  updateOrDeleteEducation = (id, field, value) => {
-    // Modify value
-    if (value || value === "") {
-      const updatedEducation = this.state.education.map((education) => {
-        if (id === education.id) {
-          return {
-            ...education,
-            [field]: value,
-          };
-        }
-        return education;
-      });
-
-      return this.setState({
-        ...this.state,
-        education: updatedEducation,
-      });
-    }
-
-    // Delete
-    const updatedEducation = this.state.education.filter((education) => education.id !== id);
-    this.setState({
-      ...this.state,
-      education: updatedEducation,
-    });
-  };
-
-  handleNewExperienceBlock = () => {
-    const updatedExperience = [{ ...experience, id: uniqid() }, ...this.state.experience];
-    this.setState({
-      ...this.state,
-      experience: updatedExperience,
-    });
-  };
-
-  updateOrDeleteExperience = (id, field, value) => {
-    // Modify value
-    if (value || value === "") {
-      const updatedExperience = this.state.experience.map((experience) => {
-        if (id === experience.id) {
-          return {
-            ...experience,
-            [field]: value,
-          };
-        }
-        return experience;
-      });
-
-      return this.setState({
-        ...this.state,
-        experience: updatedExperience,
-      });
-    }
-
-    // Delete
-    const updatedExperience = this.state.experience.filter((exp) => id !== exp.id);
-    this.setState({
-      ...this.state,
-      experience: updatedExperience,
-    });
-  };
-
-  handleNewSkill = () => {
-    const skills = [{ id: uniqid(), value: "" }, ...this.state.skills];
-    this.setState({
-      ...this.state,
-      skills,
-    });
-  };
-
-  handleEditSkill = (id, value) => {
-    const skills = this.state.skills.map((skill) => {
-      if (skill.id === id) {
-        return {
-          ...skill,
-          value,
-        };
-      }
-
-      return skill;
-    });
-
-    this.setState({
-      ...this.state,
-      skills,
-    });
-  };
-
-  handleDeleteSkill = (id) => {
-    const skills = this.state.skills.filter((skill) => id !== skill.id);
-    this.setState({
-      ...this.state,
-      skills,
-    });
-  };
-
-  handleNewLanguage = () => {
-    const languages = [{ ...language, id: uniqid() }, ...this.state.languages];
-    this.setState({
-      ...this.state,
-      languages,
-    });
-  };
-
-  handleModifyLanguage = (id, field, value) => {
-    // Modify value
-    if (value || value === "") {
-      const updatedLanguages = this.state.languages.map((language) => {
-        if (id === language.id) {
-          return {
-            ...language,
-            [field]: value,
-          };
-        }
-        return language;
-      });
-
-      this.setState({
-        ...this.state,
-        languages: updatedLanguages,
-      });
-
-      return;
-    }
-
-    // Remove
-    const languages = this.state.languages.filter((language) => language.id !== id);
-    this.setState({
-      ...this.state,
-      languages,
-    });
-  };
-
-  handleNewInterest = () => {
-    this.setState({
-      ...this.state,
-      interests: [{ ...interest, id: uniqid() }, ...this.state.interests],
-    });
-  };
-
-  updateOrDeleteInterest = (id, field, value) => {
-    if (value || value === "") {
-      const newInterests = this.state.interests.map((interest) => {
-        if (id === interest.id) {
-          return {
-            ...interest,
-            [field]: value,
-          };
-        } else return interest;
-      });
-
-      this.setState({
-        ...this.state,
-        interests: newInterests,
-      });
-      return;
-    }
-
-    // Delete interest
-    const updatedInterests = this.state.interests.filter((interest) => id !== interest.id);
-    this.setState({
-      ...this.state,
-      interests: updatedInterests,
-    });
-  };
-
-  render() {
-    const currPage = this.state.isPreviewActive ? (
-      <CVPreview personalInfo={this.state.personalInfo} />
-    ) : (
-      <CVForm
-        personalInfo={this.state.personalInfo}
-        userSkills={this.state.skills}
-        userLanguages={this.state.languages}
-        userEducation={this.state.education}
-        userExperience={this.state.experience}
-        userInterests={this.state.interests}
-        handlePersonalChanges={this.handlePersonalChanges}
-        handleNewEducationBlock={this.handleNewEducationBlock}
-        handleEducationChanges={this.updateOrDeleteEducation}
-        handleNewExperienceBlock={this.handleNewExperienceBlock}
-        handleExperienceChanges={this.updateOrDeleteExperience}
-        handleInterestsChanges={this.updateOrDeleteInterest}
-        handleNewSkill={this.handleNewSkill}
-        handleEditSkill={this.handleEditSkill}
-        handleDeleteSkill={this.handleDeleteSkill}
-        handleNewLanguage={this.handleNewLanguage}
-        handleModifyLanguage={this.handleModifyLanguage}
-        handleNewInterest={this.handleNewInterest}
-      />
-    );
-
-    return (
-      <>
-        <Header onTogglePreview={this.togglePreview} />
-        <main className="content-margin">{currPage}</main>
-      </>
-    );
   }
+
+  // Skills
+  function handleAddSkill() {
+    setSkills([models.createSkill(), ...skills]);
+  }
+
+  function handleSkillChanges(id, newValue) {
+    const newSkills = skills.map((skill) => {
+      if (id === skill.id) {
+        return { ...skill, name: newValue };
+      } else return skill;
+    });
+    setSkills(newSkills);
+  }
+
+  function handleDeleteSkill(id) {
+    setSkills(skills.filter((skill) => id !== skill.id));
+  }
+
+  // Education
+  function handleAddEducation() {
+    setEducationData([models.createEducationEntry(), ...educationData]);
+  }
+
+  function handleEducationChanges(id, field, newValue) {
+    const updatedData = educationData.map((education) => {
+      if (id === education.id) {
+        return {
+          ...education,
+          [field]: newValue,
+        };
+      } else return education;
+    });
+    setEducationData(updatedData);
+  }
+
+  function handleDeleteEducation(id) {
+    setEducationData(educationData.filter((education) => id !== education.id));
+  }
+
+  // Work Experience
+  function handleAddExperience() {
+    setWorkData([models.createExperienceEntry(), ...workData]);
+  }
+
+  function handleExperienceChanges(id, field, newValue) {
+    const updatedData = workData.map((exp) => {
+      if (id === exp.id) {
+        return {
+          ...exp,
+          [field]: newValue,
+        };
+      } else return exp;
+    });
+    setWorkData(updatedData);
+  }
+
+  function handleDeleteExperience(id) {
+    setWorkData(workData.filter((exp) => id !== exp.id));
+  }
+
+  // Languages
+  function handleAddLanguage() {
+    setLanguages([models.createLanguage(), ...languages]);
+  }
+
+  function handleLanguageChanges(id, field, newValue) {
+    const updatedData = languages.map((lang) => {
+      if (id === lang.id) {
+        return {
+          ...lang,
+          [field]: newValue,
+        };
+      } else return lang;
+    });
+    setLanguages(updatedData);
+  }
+
+  function handleDeleteLanguage(id) {
+    setLanguages(languages.filter((lang) => id !== lang.id));
+  }
+
+  // Interests
+  function handleAddInterest() {
+    setInterests([models.createInterest(), ...interests]);
+  }
+
+  function handleInterestChanges(id, field, newValue) {
+    const updatedData = interests.map((int) => {
+      if (id === int.id) {
+        return {
+          ...int,
+          [field]: newValue,
+        };
+      } else return int;
+    });
+    setInterests(updatedData);
+  }
+
+  function handleDeleteInterest(id) {
+    setInterests(interests.filter((int) => id !== int.id));
+  }
+
+  return (
+    <>
+      <Header onTogglePreview={togglePreview} />
+      <main className="content-margin">
+        {isPreviewActive ? (
+          <CVPreview personalInfo={personalData} />
+        ) : (
+          <CVForm
+            personalData={personalData}
+            onPersonalChanges={handlePersonalDataChanges}
+            educationData={educationData}
+            onAddEducation={handleAddEducation}
+            onChangeEducation={handleEducationChanges}
+            onDeleteEducation={handleDeleteEducation}
+            workData={workData}
+            onAddExperience={handleAddExperience}
+            onChangeExperience={handleExperienceChanges}
+            onDeleteExperience={handleDeleteExperience}
+            skills={skills}
+            onAddSkill={handleAddSkill}
+            onChangeSkill={handleSkillChanges}
+            onDeleteSkill={handleDeleteSkill}
+            languages={languages}
+            onAddLanguage={handleAddLanguage}
+            onChangeLanguage={handleLanguageChanges}
+            onDeleteLanguage={handleDeleteLanguage}
+            interests={interests}
+            onAddInterest={handleAddInterest}
+            onChangeInterest={handleInterestChanges}
+            onDeleteInterest={handleDeleteInterest}
+          />
+        )}
+      </main>
+    </>
+  );
 }
 
 // Initialize emoji-mart
