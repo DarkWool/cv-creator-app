@@ -29,7 +29,7 @@ export function CVForm(props) {
         data={props.skills}
         onAddSkill={props.onAddSkill}
         onChange={props.onChangeSkill}
-        onDeleteEntry={props.onSkillDelete}
+        onDeleteEntry={props.onDeleteSkill}
       />
       <Languages
         step={5}
