@@ -17,7 +17,15 @@ export function Header({ onTogglePreview, onFillExampleCV }) {
               Preview my CV
             </li>
             <li className="header_nav-item">
-              <button type="button" onClick={() => onFillExampleCV()}>
+              <button
+                type="button"
+                onClick={(e) => {
+                  const userAnswer = window.confirm(
+                    "Are you sure you want to load the example CV?, this will erase all the data you have entered and can't be undone."
+                  );
+                  if (userAnswer) onFillExampleCV();
+                }}
+              >
                 Fill Example CV
               </button>
             </li>
