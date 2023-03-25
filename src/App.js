@@ -11,9 +11,13 @@ function App() {
   const [personalData, setPersonalData] = useState(models.personalData);
   const [educationData, setEducationData] = useState([models.createEducationEntry()]);
   const [workData, setWorkData] = useState([models.createExperienceEntry()]);
-  const [skills, setSkills] = useState([models.createSkill(), models.createSkill()]);
-  const [languages, setLanguages] = useState([models.createLanguage()]);
-  const [interests, setInterests] = useState([models.createInterest()]);
+  const [languages, setLanguages] = useState([models.createLanguage(), models.createLanguage()]);
+  const [interests, setInterests] = useState([models.createInterest(), models.createInterest()]);
+  const [skills, setSkills] = useState([
+    models.createSkill(),
+    models.createSkill(),
+    models.createSkill(),
+  ]);
 
   const togglePreview = (value) => setIsPreviewActive(value);
 
