@@ -1,6 +1,6 @@
 import "../styles/Header.css";
 
-export function Header({ onTogglePreview }) {
+export function Header({ onTogglePreview, onFillExampleCV }) {
   return (
     <header>
       <div className="content-margin header_inner">
@@ -15,6 +15,11 @@ export function Header({ onTogglePreview }) {
             </li>
             <li className="header_nav-item" onClick={() => onTogglePreview(true)}>
               Preview my CV
+            </li>
+            <li className="header_nav-item">
+              <button type="button" onClick={() => onFillExampleCV()}>
+                Fill Example CV
+              </button>
             </li>
           </ul>
         </nav>

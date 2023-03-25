@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Header } from "./components/Header";
 import { CVForm } from "./components/CVForm";
 import { CVPreview } from "./components/CVPreview";
+import { fakeData } from "./fake-data";
 import { init } from "emoji-mart";
 import data from "@emoji-mart/data";
 
@@ -131,9 +132,19 @@ function App() {
     setInterests(interests.filter((int) => id !== int.id));
   }
 
+  // Fake data
+  function handleFillExampleCV() {
+    setPersonalData(fakeData.personal);
+    setEducationData(fakeData.education);
+    setWorkData(fakeData.work);
+    setSkills(fakeData.skills);
+    setLanguages(fakeData.languages);
+    setInterests(fakeData.interests);
+  }
+
   return (
     <>
-      <Header onTogglePreview={togglePreview} />
+      <Header onTogglePreview={togglePreview} onFillExampleCV={handleFillExampleCV} />
       <main className="content-margin">
         {isPreviewActive ? (
           <CVPreview personalInfo={personalData} />
