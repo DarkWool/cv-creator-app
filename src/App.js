@@ -27,7 +27,7 @@ function App() {
 
   // Skills
   function handleAddSkill() {
-    setSkills([models.createSkill(), ...skills]);
+    setSkills([...skills, models.createSkill()]);
   }
 
   function handleSkillChanges(id, newValue) {
@@ -45,7 +45,7 @@ function App() {
 
   // Education
   function handleAddEducation() {
-    setEducationData([models.createEducationEntry(), ...educationData]);
+    setEducationData([...educationData, models.createEducationEntry()]);
   }
 
   function handleEducationChanges(id, field, newValue) {
@@ -66,7 +66,7 @@ function App() {
 
   // Work Experience
   function handleAddExperience() {
-    setWorkData([models.createExperienceEntry(), ...workData]);
+    setWorkData([...workData, models.createExperienceEntry()]);
   }
 
   function handleExperienceChanges(id, field, newValue) {
@@ -87,7 +87,7 @@ function App() {
 
   // Languages
   function handleAddLanguage() {
-    setLanguages([models.createLanguage(), ...languages]);
+    setLanguages([...languages, models.createLanguage()]);
   }
 
   function handleLanguageChanges(id, field, newValue) {
@@ -108,7 +108,7 @@ function App() {
 
   // Interests
   function handleAddInterest() {
-    setInterests([models.createInterest(), ...interests]);
+    setInterests([...interests, models.createInterest()]);
   }
 
   function handleInterestChanges(id, field, newValue) {
