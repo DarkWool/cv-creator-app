@@ -7,7 +7,17 @@ import { Textarea } from "../FormElements/Textarea";
 export function General({ step, data, onChange }) {
   return (
     <section className="edit-block">
-      <FormHeader step={step} title={"General Information"} />
+      <FormHeader
+        step={step}
+        title={"General Information"}
+        desc={
+          <p>
+            This is a critical part of your CV as it gives the potential employer a glimpse of who
+            you are. This is an opportunity for you to introduce yourself, highlight your skills,
+            and provide a brief summary of your career goals.
+          </p>
+        }
+      />
       <FormContainer>
         <div className="flex-2-rows">
           <InputWrapper>

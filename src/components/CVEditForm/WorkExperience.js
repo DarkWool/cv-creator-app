@@ -94,6 +94,19 @@ export function WorkExperience({ step, data, onAddExperience, onChange, onDelete
       <FormHeader
         step={step}
         title={"Work Experience"}
+        desc={
+          <>
+            <p>
+              Showcase your professional accomplishments and demonstrate your ability to contribute
+              to an organization.
+            </p>
+            <p>
+              In addition to the basics, you should also include a brief description of your duties
+              and accomplishments while in the role. This can help potential employers understand
+              the scope of your responsibilities and the impact of it.
+            </p>
+          </>
+        }
         buttonText="Add more experience"
         clickHandler={onAddExperience}
       />

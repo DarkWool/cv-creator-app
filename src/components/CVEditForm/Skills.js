@@ -19,7 +19,20 @@ export function Skills({ step, data, onAddSkill, onChange, onDeleteEntry }) {
 
   return (
     <section className="edit-block">
-      <FormHeader step={step} title={"Skills"} buttonText={"Add Skill"} clickHandler={onAddSkill} />
+      <FormHeader
+        step={step}
+        title={"Skills"}
+        desc={
+          <p>
+            Here is an opportunity to showcase your relevant abilities and qualifications for the
+            job. Be specific about your skills and match them with the requirements of the job
+            you're applying for. Include technical skills, communication skills, and problem-solving
+            abilities.
+          </p>
+        }
+        buttonText={"Add Skill"}
+        clickHandler={onAddSkill}
+      />
       <FormContainer>
         {data.map((skill, index) => {
           return (

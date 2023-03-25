@@ -53,6 +53,19 @@ export function Interests({ step, data, onAddInterest, onChange, onDeleteEntry }
       <FormHeader
         step={step}
         title={"Interests"}
+        desc={
+          <>
+            <p>
+              Your interests can give employers a better sense of who you are as a person and what
+              motivates you.
+            </p>
+            <p>
+              Be sure to choose interests that are relevant to the job you're applying for, and that
+              showcase your personality, skills, and values. e.g if you're applying for a job in
+              marketing, include interests such as writing or photography.
+            </p>
+          </>
+        }
         buttonText={"Add Interest"}
         clickHandler={onAddInterest}
       />

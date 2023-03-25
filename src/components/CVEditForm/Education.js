@@ -75,6 +75,19 @@ export function Education({ step, data, onAddEducation, onChange, onDeleteEntry 
       <FormHeader
         step={step}
         title={"Education"}
+        desc={
+          <>
+            <p>
+              The education demonstrates your commitment to learning and your willingness to acquire
+              new skills.
+            </p>
+            <p>
+              If you have multiple degrees, list them in reverse chronological order, with the most
+              recent degree listed first and <b>if you don't have any formal education</b>, consider
+              including any relevant certifications or training you may have received.
+            </p>
+          </>
+        }
         buttonText={"Add more education"}
         clickHandler={onAddEducation}
       />
