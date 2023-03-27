@@ -3,6 +3,7 @@ import { FormContainer } from "./FormContainer";
 import { Input } from "../FormElements/Input";
 import { InputWrapper } from "../FormElements/InputWrapper";
 import { Select } from "../FormElements/Select";
+import { Button } from "../Button.js";
 
 const PLACEHOLDERS = ["Spanish", "English", "Mandarin Chinese", "German", "Arabic", "Hindi"];
 
@@ -29,8 +30,14 @@ export function Languages({ step, data, onAddLanguage, onChange, onDeleteEntry }
             and increase your appeal to potential employers.
           </p>
         }
-        buttonText={"Add Language"}
-        clickHandler={onAddLanguage}
+        button={
+          <Button
+            variant="add"
+            onClick={onAddLanguage}
+            title="Add new language"
+            content="Add Language"
+          />
+        }
       />
       <FormContainer>
         {data.map((language, index) => {
@@ -53,9 +60,11 @@ export function Languages({ step, data, onAddLanguage, onChange, onDeleteEntry }
               />
 
               {entries > 1 && (
-                <button type="button" onClick={() => onDeleteEntry(language.id)}>
-                  Delete
-                </button>
+                <Button
+                  variant="delete"
+                  onClick={() => onDeleteEntry(language.id)}
+                  title="Delete language"
+                />
               )}
             </InputWrapper>
           );

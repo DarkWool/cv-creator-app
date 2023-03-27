@@ -19,6 +19,7 @@ h1 {
 .header_nav > ul {
   display: flex;
   list-style: none;
+  align-items: center;
 }
 
 .header_nav-item {

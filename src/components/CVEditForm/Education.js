@@ -3,6 +3,7 @@ import { FormHeader } from "./FormHeader";
 import { FormContainer } from "./FormContainer";
 import { Input } from "../FormElements/Input";
 import { InputWrapper } from "../FormElements/InputWrapper";
+import { Button } from "../Button.js";
 
 export function Education({ step, data, onAddEducation, onChange, onDeleteEntry }) {
   const entries = data.length;
@@ -57,13 +58,13 @@ export function Education({ step, data, onAddEducation, onChange, onDeleteEntry 
           </div>
 
           {entries > 1 && (
-            <button
-              type="button"
-              className="btn-delete"
+            <Button
+              variant="delete"
               onClick={() => onDeleteEntry(education.id)}
-            >
-              Delete Entry
-            </button>
+              title="Delete education entry"
+              content="Delete Entry"
+              extraClasses="btn-icon-delete-long"
+            />
           )}
         </div>
       </Fragment>
@@ -88,8 +89,14 @@ export function Education({ step, data, onAddEducation, onChange, onDeleteEntry 
             </p>
           </>
         }
-        buttonText={"Add more education"}
-        clickHandler={onAddEducation}
+        button={
+          <Button
+            variant="add"
+            onClick={onAddEducation}
+            title="Add more education"
+            content="Add more education"
+          />
+        }
       />
       <FormContainer>{educationBlocks}</FormContainer>
     </section>

@@ -3,6 +3,7 @@ import { FormHeader } from "./FormHeader";
 import { FormContainer } from "./FormContainer";
 import { Input } from "../FormElements/Input";
 import { InputWrapper } from "../FormElements/InputWrapper";
+import { Button } from "../Button.js";
 import Picker from "@emoji-mart/react";
 
 const tooltipPosition = { top: null };
@@ -66,8 +67,14 @@ export function Interests({ step, data, onAddInterest, onChange, onDeleteEntry }
             </p>
           </>
         }
-        buttonText={"Add Interest"}
-        clickHandler={onAddInterest}
+        button={
+          <Button
+            variant="add"
+            onClick={onAddInterest}
+            title="Add new interest"
+            content="Add Interest"
+          />
+        }
       />
       <FormContainer>
         {data.map((interest, index) => {
@@ -80,18 +87,17 @@ export function Interests({ step, data, onAddInterest, onChange, onDeleteEntry }
 
           return (
             <InputWrapper variant="row" key={interest.id}>
-              <button
-                type="button"
-                className="btn-icon-picker"
+              <Button
                 onClick={(e) => {
                   setIsTooltipActive(true);
                   setSelectedInterest(interest.id);
 
                   tooltipPosition.top = `${e.pageY}px`;
                 }}
-              >
-                <em-emoji id={iconId} size="2em"></em-emoji>
-              </button>
+                title="Change interest icon"
+                content={<em-emoji id={iconId} size="2em"></em-emoji>}
+                extraClasses="btn-icon-picker"
+              />
 
               <Input
                 id={`cvInterest${index}`}
@@ -104,9 +110,11 @@ export function Interests({ step, data, onAddInterest, onChange, onDeleteEntry }
               />
 
               {entries > 1 && (
-                <button type="button" onClick={() => onDeleteEntry(interest.id)}>
-                  Delete
-                </button>
+                <Button
+                  variant="delete"
+                  onClick={() => onDeleteEntry(interest.id)}
+                  title="Delete interest"
+                />
               )}
             </InputWrapper>
           );

@@ -4,6 +4,7 @@ import { FormContainer } from "./FormContainer";
 import { Input } from "../FormElements/Input";
 import { InputWrapper } from "../FormElements/InputWrapper";
 import { Textarea } from "../FormElements/Textarea";
+import { Button } from "../Button.js";
 
 export function WorkExperience({ step, data, onAddExperience, onChange, onDeleteEntry }) {
   const entries = data.length;
@@ -80,9 +81,13 @@ export function WorkExperience({ step, data, onAddExperience, onChange, onDelete
           </InputWrapper>
 
           {entries > 1 && (
-            <button type="button" className="btn-delete" onClick={() => onDeleteEntry(exp.id)}>
-              Delete Entry
-            </button>
+            <Button
+              variant="delete"
+              onClick={() => onDeleteEntry(exp.id)}
+              title="Delete work experience entry"
+              content="Delete Entry"
+              extraClasses="btn-icon-delete-long"
+            />
           )}
         </div>
       </Fragment>
@@ -107,8 +112,14 @@ export function WorkExperience({ step, data, onAddExperience, onChange, onDelete
             </p>
           </>
         }
-        buttonText="Add more experience"
-        clickHandler={onAddExperience}
+        button={
+          <Button
+            variant="add"
+            onClick={onAddExperience}
+            title="Add more work experience"
+            content="Add more experience"
+          />
+        }
       />
       <FormContainer>{experienceBlocks}</FormContainer>
     </section>

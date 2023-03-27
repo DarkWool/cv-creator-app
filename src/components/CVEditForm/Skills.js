@@ -2,6 +2,7 @@ import { FormHeader } from "./FormHeader";
 import { FormContainer } from "./FormContainer";
 import { Input } from "../FormElements/Input";
 import { InputWrapper } from "../FormElements/InputWrapper";
+import { Button } from "../Button.js";
 
 const PLACEHOLDERS = [
   "Strong communication",
@@ -30,8 +31,9 @@ export function Skills({ step, data, onAddSkill, onChange, onDeleteEntry }) {
             abilities.
           </p>
         }
-        buttonText={"Add Skill"}
-        clickHandler={onAddSkill}
+        button={
+          <Button variant="add" onClick={onAddSkill} title="Add new skill" content="Add Skill" />
+        }
       />
       <FormContainer>
         {data.map((skill, index) => {
@@ -45,9 +47,11 @@ export function Skills({ step, data, onAddSkill, onChange, onDeleteEntry }) {
                 placeholder={PLACEHOLDERS[index] ? `e.g. ${PLACEHOLDERS[index]}` : "New skill..."}
               />
               {entries > 1 && (
-                <button type="button" onClick={() => onDeleteEntry(skill.id)}>
-                  Delete
-                </button>
+                <Button
+                  variant="delete"
+                  onClick={() => onDeleteEntry(skill.id)}
+                  title="Delete skill"
+                />
               )}
             </InputWrapper>
           );
