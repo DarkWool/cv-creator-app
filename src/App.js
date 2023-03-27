@@ -147,7 +147,14 @@ function App() {
       <Header onTogglePreview={togglePreview} onFillExampleCV={handleFillExampleCV} />
       <main className="content-margin">
         {isPreviewActive ? (
-          <CVPreview personalInfo={personalData} />
+          <CVPreview
+            personalData={personalData}
+            educationData={educationData}
+            workData={workData}
+            skills={skills}
+            languages={languages}
+            interests={interests}
+          />
         ) : (
           <CVForm
             personalData={personalData}
