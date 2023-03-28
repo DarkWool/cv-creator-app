@@ -4,7 +4,6 @@ svg {
 
 .cv {
   display: flex;
-  margin-top: 50px;
   border: 1px solid hsl(0, 0%, 92%);
 }
 
@@ -29,7 +28,7 @@ svg {
 }
 
 .cv_main > div + div {
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 .cv_main,
@@ -42,7 +41,7 @@ svg {
   flex-direction: column;
 }
 
-.cv_sidebar-section + .cv_sidebar-section {
+* + .cv_sidebar-section {
   margin-top: 50px;
 }
 
@@ -110,6 +109,7 @@ svg {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.cv_location,
 .cv_about-list li,
 .cv_about-list a {
   display: flex;
