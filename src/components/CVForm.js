@@ -5,10 +5,12 @@ import { Languages } from "./CVEditForm/Languages";
 import { Education } from "./CVEditForm/Education";
 import { WorkExperience } from "./CVEditForm/WorkExperience";
 import { Interests } from "./CVEditForm/Interests";
+import { ProfilePicture } from "./CVEditForm/ProfilePicture";
 
 export function CVForm(props) {
   return (
     <>
+      <ProfilePicture image={props.profilePicture} onChange={props.onProfilePictureChange} />
       <General step={1} data={props.personalData} onChange={props.onPersonalChanges} />
       <Education
         step={2}

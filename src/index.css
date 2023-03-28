@@ -60,6 +60,27 @@ b {
   font-weight: 600;
 }
 
+.profile-picture-container,
+.profile-picture {
+  aspect-ratio: 1 / 1;
+}
+
+.profile-picture {
+  height: 100%;
+  object-fit: cover;
+  max-width: 175px;
+  border-radius: 100%;
+}
+
+.profile-picture-placeholder {
+  height: 175px;
+  width: 175px;
+  border: 2px solid var(--accentColor);
+  border-radius: 100%;
+  border-style: dashed;
+  background-color: hsl(263.6, 100%, 94.5%);
+}
+
 .accent-color {
   color: var(--accentColor);
 }

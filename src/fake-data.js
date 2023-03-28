@@ -1,6 +1,8 @@
 import * as models from "./models";
+import defaultProfilePicture from "./images/wick.png";
 
 export const fakeData = {
+  profilePicture: defaultProfilePicture,
   personal: {
     firstName: "Dark",
     lastName: "Woolper",

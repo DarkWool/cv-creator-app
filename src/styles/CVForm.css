@@ -12,6 +12,17 @@ textarea {
   appearance: none;
 }
 
+input::file-selector-button {
+  appearance: none;
+  border: none;
+  padding: 10px 20px;
+  background-color: var(--accentColor);
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-right: 15px;
+}
+
 select {
   /* border: 1px solid var(--accentColor); */
   cursor: pointer;
@@ -103,6 +114,20 @@ label {
   border: 2px solid hsl(262.2, 100%, 96%);
   border-radius: 20px;
   background-color: hsl(264, 100%, 98%);
+}
+
+.edit-block_form-desc h2 {
+  margin-bottom: 10px;
+}
+
+.edit-block_form-desc input {
+  margin-top: 20px;
+}
+
+.edit-picture_form {
+  flex-direction: row;
+  gap: 50px;
+  align-items: center;
 }
 
 .edit-block_separator {

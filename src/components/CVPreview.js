@@ -17,12 +17,24 @@ function determineLanguageLevel(level) {
   }
 }
 
-export function CVPreview({ personalData, educationData, workData, skills, languages, interests }) {
+export function CVPreview({
+  profilePicture,
+  personalData,
+  educationData,
+  workData,
+  skills,
+  languages,
+  interests,
+}) {
   return (
     <section className="cv">
       <div className="cv_sidebar">
-        <div>
-          <img src="wick.jpg" alt="" />
+        <div className="profile-picture-container">
+          {profilePicture ? (
+            <img src={profilePicture} alt="user" className="profile-picture" />
+          ) : (
+            <div className="profile-picture-placeholder"></div>
+          )}
         </div>
 
         <div className="cv_sidebar-section">

@@ -9,6 +9,7 @@ import data from "@emoji-mart/data";
 
 function App() {
   const [isPreviewActive, setIsPreviewActive] = useState(false);
+  const [profilePicture, setProfilePicture] = useState(null);
   const [personalData, setPersonalData] = useState(models.personalData);
   const [educationData, setEducationData] = useState([models.createEducationEntry()]);
   const [workData, setWorkData] = useState([models.createExperienceEntry()]);
@@ -21,6 +22,11 @@ function App() {
   ]);
 
   const togglePreview = (value) => setIsPreviewActive(value);
+
+  // Profile picture
+  function handleChangeProfilePicture(e) {
+    setProfilePicture(URL.createObjectURL(e.target.files[0]));
+  }
 
   // Personal Data
   function handlePersonalDataChanges(field, value) {
@@ -134,6 +140,7 @@ function App() {
 
   // Fake data
   function handleFillExampleCV() {
+    setProfilePicture(fakeData.profilePicture);
     setPersonalData(fakeData.personal);
     setEducationData(fakeData.education);
     setWorkData(fakeData.work);
@@ -148,6 +155,7 @@ function App() {
       <main className="content-margin">
         {isPreviewActive ? (
           <CVPreview
+            profilePicture={profilePicture}
             personalData={personalData}
             educationData={educationData}
             workData={workData}
@@ -157,6 +165,8 @@ function App() {
           />
         ) : (
           <CVForm
+            profilePicture={profilePicture}
+            onProfilePictureChange={handleChangeProfilePicture}
             personalData={personalData}
             onPersonalChanges={handlePersonalDataChanges}
             educationData={educationData}
