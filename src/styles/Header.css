@@ -20,14 +20,16 @@ h1 {
   display: flex;
   list-style: none;
   align-items: center;
+  column-gap: 15px;
 }
 
-.header_nav-item {
+.header_nav-item > .simple {
+  cursor: pointer;
   padding: 15px;
   font-weight: 500;
-  cursor: pointer;
+  background-color: transparent;
 }
 
-.header_nav-item:hover {
+.header_nav-item > .simple:hover {
   color: var(--accentColor);
 }

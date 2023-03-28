@@ -52,6 +52,16 @@ strong {
   font-weight: bold;
 }
 
+a {
+  color: var(--accentColor);
+  text-decoration: none;
+  transition: 0.3s color ease;
+}
+
+a:hover {
+  color: hsl(186, 100%, 25%);
+}
+
 p + p {
   margin-top: 10px;
 }
@@ -109,11 +119,26 @@ b {
   margin-top: 25px;
 }
 
+/* ---------- Buttons ---------- */
 button {
   appearance: none;
   border: none;
   cursor: pointer;
   border-radius: 4px;
+  transition: 0.2s all ease;
+}
+
+.btn-secondary {
+  padding: 10px 20px;
+  border: 2px solid var(--accentColor);
+  font-weight: 500;
+  background-color: transparent;
+  color: var(--accentColor);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accentColor);
+  color: white;
 }
 
 .btn-icon-add {
