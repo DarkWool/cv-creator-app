@@ -14,7 +14,9 @@
 
 :root {
   --accentColor: hsla(266, 100%, 50%, 1);
+  --darkerAccentColor: hsl(266.1, 100%, 30%);
   --accentColorDark: hsl(266.1, 100%, 80.2%);
+  --dangerColor: hsl(335, 95.9%, 37.8%);
 }
 
 ::selection {
@@ -154,11 +156,15 @@ button {
   margin-top: 15px;
 }
 
+.btn-icon-add:hover {
+  background-color: var(--darkerAccentColor);
+}
+
 .btn-icon-delete {
   flex-shrink: 0;
   padding: 0 8px;
   fill: white;
-  background-color: hsl(335, 95.9%, 37.8%);
+  background-color: var(--dangerColor);
 }
 
 .btn-icon-delete-long {
@@ -169,9 +175,18 @@ button {
   color: white;
 }
 
+.btn-icon-delete:hover,
+.btn-icon-delete-long:hover {
+  background-color: hsl(335, 95.9%, 26%);
+}
+
 .btn-icon-picker {
   background-color: transparent;
   margin-right: 10px;
+}
+
+.btn-icon-picker:hover {
+  background-color: hsl(0, 0%, 90%);
 }
 
 .content-margin {
