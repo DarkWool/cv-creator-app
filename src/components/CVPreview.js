@@ -1,3 +1,5 @@
+import { CVPdf } from "./CVPdf.js";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import "../styles/CVPreview.css";
 
 function determineLanguageLevel(level) {
@@ -26,7 +28,46 @@ export function CVPreview({
   languages,
   interests,
 }) {
+  const formattedLanguages = languages.map((lang) => {
+    return {
+      ...lang,
+      proficiency: determineLanguageLevel(lang.proficiency),
+    };
+  });
+
   return (
+    <>
+      <div className="preview_download">
+        <PDFDownloadLink
+          document={
+            <CVPdf
+              profilePicture={profilePicture}
+              personalData={personalData}
+              educationData={educationData}
+              workData={workData}
+              skills={skills}
+              languages={formattedLanguages}
+              interests={interests}
+            />
+          }
+          fileName={personalData.firstName ? `cv-${personalData.firstName}.pdf` : "cv.pdf"}
+          className="btn-primary border-radius-4"
+        >
+          {({ blob, url, loading, error }) =>
+            loading ? (
+              "Loading document..."
+            ) : (
+              <>
+                <svg viewBox="0 0 24 24" width="22" height="22">
+                  <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+                </svg>
+                Download as PDF
+              </>
+            )
+          }
+        </PDFDownloadLink>
+      </div>
+
       <section className="preview_cv">
         <div className="cv_sidebar">
           <div className="profile-picture-container">

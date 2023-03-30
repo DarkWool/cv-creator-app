@@ -15,12 +15,12 @@
 :root {
   --accentColor: hsla(266, 100%, 50%, 1);
   --darkerAccentColor: hsl(266.1, 100%, 30%);
-  --accentColorDark: hsl(266.1, 100%, 80.2%);
+  --accentColorDark: hsl(265.9, 100%, 71.4%);
   --dangerColor: hsl(335, 95.9%, 37.8%);
 }
 
 ::selection {
-  background-color: hsla(209, 75%, 37%, 0.85);
+  background-color: hsla(266.1, 100%, 39%, 0.75);
   color: white;
 }
 
@@ -38,6 +38,7 @@ body {
 }
 
 main {
+  margin-top: 50px;
   margin-bottom: 50px;
 }
 
@@ -70,6 +71,22 @@ p + p {
 
 b {
   font-weight: 600;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+svg {
+  flex-shrink: 0;
+}
+
+.content-margin {
+  max-width: 900px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .profile-picture-container,
@@ -121,13 +138,44 @@ b {
   margin-top: 25px;
 }
 
+a,
+button {
+  transition: 0.2s all ease;
+}
+
 /* ---------- Buttons ---------- */
 button {
   appearance: none;
   border: none;
   cursor: pointer;
+}
+
+.border-radius-4,
+button {
   border-radius: 4px;
-  transition: 0.2s all ease;
+}
+
+.btn-primary,
+.btn-icon-add {
+  display: flex;
+  gap: 10px;
+  padding: 10px 20px;
+  align-items: center;
+  background-color: var(--accentColor);
+  color: white;
+  fill: white;
+  font-weight: bold;
+}
+
+.btn-icon-add {
+  margin-top: 15px;
+  margin-left: auto;
+}
+
+.btn-primary:hover,
+.btn-icon-add:hover {
+  background-color: var(--darkerAccentColor);
+  color: white;
 }
 
 .btn-secondary {
@@ -143,32 +191,17 @@ button {
   color: white;
 }
 
-.btn-icon-add {
-  display: flex;
-  gap: 10px;
-  padding: 10px 20px;
-  align-items: center;
-  background-color: var(--accentColor);
-  color: white;
-  fill: white;
-  font-weight: bold;
-  margin-left: auto;
-  margin-top: 15px;
-}
-
-.btn-icon-add:hover {
-  background-color: var(--darkerAccentColor);
-}
-
 .btn-icon-delete {
+  display: flex;
   flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
   padding: 0 8px;
   fill: white;
   background-color: var(--dangerColor);
 }
 
 .btn-icon-delete-long {
-  display: flex;
   gap: 10px;
   padding: 10px 15px;
   font-weight: 600;
@@ -187,11 +220,4 @@ button {
 
 .btn-icon-picker:hover {
   background-color: hsl(0, 0%, 90%);
-}
-
-.content-margin {
-  max-width: 900px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
 }
