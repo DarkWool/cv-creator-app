@@ -64,7 +64,7 @@ export function General({ step, data, onChange }) {
         <div className="flex-2-rows">
           <InputWrapper>
             <Input
-              label="LinkedIn Profile"
+              label="LinkedIn username"
               id="cvLinkedIn"
               type="text"
               value={data.linkedIn}
