@@ -95,6 +95,7 @@
 
 .cv_about-list {
   margin-top: 25px;
+  word-break: break-all;
 }
 
 .cv_location,
@@ -130,4 +131,35 @@
 
 .cv_experience-details > p {
   margin: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .preview_cv {
+    font-size: 1rem;
+  }
+
+  .cv_main,
+  .cv_sidebar {
+    padding: 20px;
+  }
+
+  .cv_sidebar {
+    max-width: 150px;
+  }
+
+  .cv_title {
+    font-size: 1rem;
+  }
+
+  .cv_name {
+    font-size: 2rem;
+  }
+
+  .cv_profession {
+    font-size: 1rem;
+  }
+
+  .cv_entry-title {
+    font-size: 1rem;
+  }
 }

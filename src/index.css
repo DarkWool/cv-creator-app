@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Spline+Sans:wght@300;400;500;600;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Spline+Sans:wght@300;400;500;600;700&display=swap");
 
 *,
 *::before,
@@ -220,4 +220,34 @@ button {
 
 .btn-icon-picker:hover {
   background-color: hsl(0, 0%, 90%);
+}
+
+@media only screen and (max-width: 768px) {
+  main {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .content-margin {
+    padding: 12px;
+  }
+
+  .profile-picture {
+    max-width: 150px;
+  }
+
+  .btn-icon-add {
+    margin-right: auto;
+  }
+
+  .btn-primary,
+  .btn-icon-add,
+  .btn-icon-delete,
+  .btn-secondary {
+    padding: 8px 15px;
+  }
+
+  .margin-t-25 {
+    margin-top: 15px;
+  }
 }

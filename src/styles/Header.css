@@ -1,13 +1,18 @@
 header {
-  border-bottom: 1px solid hsla(207, 27%, 89%, 1);
+  position: sticky;
+  z-index: 10;
+  top: 0%;
   padding: 10px;
+  border-bottom: 1px solid hsla(207, 27%, 89%, 1);
   font-size: 1.6rem;
+  background-color: white;
 }
 
 h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 3.2rem;
   font-weight: bold;
+  line-height: 1;
 }
 
 .header_inner {
@@ -32,4 +37,23 @@ h1 {
 
 .header_nav-item > .simple:hover {
   color: var(--accentColor);
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 2.6rem;
+  }
+
+  .header_inner {
+    flex-direction: column;
+    row-gap: 12px;
+  }
+
+  .header_nav-item > .simple {
+    padding: 5px;
+  }
+
+  .header_nav-item {
+    font-size: 1.4rem;
+  }
 }
