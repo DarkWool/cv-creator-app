@@ -2,7 +2,6 @@ import SplineSansMedium from "../fonts/SplineSans-Medium.ttf";
 import SplineSansSemiBold from "../fonts/SplineSans-SemiBold.ttf";
 import SplineSansRegular from "../fonts/SplineSans-Regular.ttf";
 import SplineSansBold from "../fonts/SplineSans-Bold.ttf";
-import { PDFViewer } from "@react-pdf/renderer";
 import { Font } from "@react-pdf/renderer";
 import {
   Page,
@@ -30,8 +29,8 @@ const styles = StyleSheet.create({
   body: {
     fontFamily: "SplineSans",
     flexDirection: "row",
-    fontSize: 10,
-    lineHeight: 1.25,
+    fontSize: 8,
+    lineHeight: 1.3,
   },
   mainColumn: {
     padding: 25,
@@ -155,9 +154,15 @@ export const CVPdf = ({
               <Text style={styles.title}>SKILLS</Text>
             </View>
             <View style={styles.list}>
-              {skills.map((skill) => (
-                <Text style={styles.listItem}>- {skill.name}</Text>
-              ))}
+              {skills.map((skill) => {
+                return (
+                  skill.name && (
+                    <Text style={styles.listItem} key={skill.id}>
+                      - {skill.name}
+                    </Text>
+                  )
+                );
+              })}
             </View>
           </View>
 
@@ -169,12 +174,14 @@ export const CVPdf = ({
             <View style={styles.list}>
               {languages.map((lang) => {
                 return (
-                  <View style={styles.listItem}>
-                    <Text>- {lang.name}</Text>
-                    <Text style={[styles.fw600, { color: "hsl(265.9, 100%, 71.4%)" }]}>
-                      {lang.proficiency}
-                    </Text>
-                  </View>
+                  lang.name && (
+                    <View style={styles.listItem} key={lang.id}>
+                      <Text>- {lang.name}</Text>
+                      <Text style={[styles.fw600, { color: "hsl(265.9, 100%, 71.4%)" }]}>
+                        {lang.proficiency}
+                      </Text>
+                    </View>
+                  )
                 );
               })}
             </View>
@@ -186,9 +193,15 @@ export const CVPdf = ({
               <Text style={styles.title}>INTERESTS</Text>
             </View>
             <View style={styles.list}>
-              {interests.map((int) => (
-                <Text style={styles.listItem}>- {int.name}</Text>
-              ))}
+              {interests.map((int) => {
+                return (
+                  int.name && (
+                    <Text style={styles.listItem} key={int.id}>
+                      - {int.name}
+                    </Text>
+                  )
+                );
+              })}
             </View>
           </View>
         </View>
@@ -280,7 +293,7 @@ export const CVPdf = ({
             </View>
 
             {workData.map((exp, index) => (
-              <View style={index !== 0 ? styles.mainEntry : null}>
+              <View style={index !== 0 ? styles.mainEntry : null} key={exp.id}>
                 <View style={styles.fsize11}>
                   <Text style={styles.fw600}>{exp.position}</Text>
                   <Text>{exp.company}</Text>
@@ -308,7 +321,7 @@ export const CVPdf = ({
             </View>
 
             {educationData.map((educ, index) => (
-              <View style={index !== 0 ? styles.mainEntry : null}>
+              <View style={index !== 0 ? styles.mainEntry : null} key={educ.id}>
                 <View style={styles.fsize11}>
                   <Text style={styles.fw600}>{educ.degree}</Text>
                   <Text style={{ marginTop: 2, marginBottom: 6 }}>{educ.school}</Text>
