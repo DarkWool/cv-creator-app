@@ -5,9 +5,9 @@ import "../styles/CVPreview.css";
 function determineLanguageLevel(level) {
   switch (level) {
     case "elementary":
-      return "elementary";
+      return "Elementary";
     case "limited":
-      return "limited";
+      return "Limited";
     case "professional":
       return "Professional";
     case "fullProfessional":
