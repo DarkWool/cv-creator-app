@@ -42,7 +42,7 @@ export function Languages({ step, data, onAddLanguage, onChange, onDeleteEntry }
       <FormContainer>
         {data.map((language, index) => {
           return (
-            <InputWrapper variant="row" key={language.id}>
+            <InputWrapper variant="row" className="language" key={language.id}>
               <Input
                 id={`cvLang${index}`}
                 type="text"

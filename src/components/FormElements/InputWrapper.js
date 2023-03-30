@@ -1,4 +1,5 @@
-export function InputWrapper({ children, variant }) {
+export function InputWrapper({ children, variant, className }) {
   const variantClass = variant === "row" ? "row" : "";
-  return <div className={`input-wrapper ${variantClass}`}>{children}</div>;
+  const extraClasses = className ? className : "";
+  return <div className={`input-wrapper ${variantClass} ${extraClasses}`}>{children}</div>;
 }
