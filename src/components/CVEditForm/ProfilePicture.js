@@ -27,8 +27,8 @@ export function ProfilePicture({ image, onChange }) {
             image that represents you in a professional and approachable manner.
           </p>
           <p>
-            When you're done, the next step is to start filling your application with your personal
-            information, good luck!
+            When you're done, the next step is to{" "}
+            <b>start filling your application with your personal information</b>, good luck!
           </p>
           <Input id="cvProfilePicture" type="file" onChange={onChange} />
         </div>

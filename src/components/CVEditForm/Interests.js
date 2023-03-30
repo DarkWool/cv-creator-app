@@ -94,7 +94,7 @@ export function Interests({ step, data, onAddInterest, onChange, onDeleteEntry }
 
                   tooltipPosition.top = `${e.pageY}px`;
                 }}
-                title="Change interest icon"
+                title={interest.name ? `Change ${interest.name} icon` : "Change interest icon"}
                 content={<em-emoji id={iconId} size="2em"></em-emoji>}
                 extraClasses="btn-icon-picker"
               />

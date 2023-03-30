@@ -113,7 +113,7 @@ export function General({ step, data, onChange }) {
             id="cvAboutMe"
             value={data.aboutMe}
             onInputChange={(e) => onChange("aboutMe", e.target.value)}
-            rows={8}
+            rows={6}
             resize="y"
             placeholder="Tell us about yourself! This is your chance to showcase your skills, experience, and personality. Write a brief summary of who you are and what you can bring to the table."
           />
