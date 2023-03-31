@@ -138,6 +138,10 @@ svg {
   margin-top: 25px;
 }
 
+.input-wrapper .fx-relay-email-input-wrapper {
+  z-index: 5;
+}
+
 a,
 button {
   transition: 0.2s all ease;

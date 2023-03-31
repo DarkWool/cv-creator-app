@@ -3,6 +3,7 @@ header {
   z-index: 10;
   top: 0%;
   padding: 10px;
+  box-shadow: 0 5px 10px hsla(0, 0%, 0%, 0.03);
   border-bottom: 1px solid hsla(207, 27%, 89%, 1);
   font-size: 1.6rem;
   background-color: white;
