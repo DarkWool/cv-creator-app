@@ -30,6 +30,7 @@ export function EmojiPicker({ shouldRender, onEmojiSelect, onClickOutside }) {
           skinTonePosition="none"
           onEmojiSelect={onEmojiSelect}
           onClickOutside={onClickOutside}
+          dynamicWidth="true"
         />
       </div>
     )

@@ -41,6 +41,11 @@ label {
   font-weight: 500;
 }
 
+em-emoji-picker {
+  width: 350px;
+  min-width: 200px;
+}
+
 .edit-block {
   position: relative;
 }
@@ -220,5 +225,10 @@ label {
 
   .language > button {
     flex-grow: 1;
+  }
+
+  em-emoji-picker {
+    min-width: 250px;
+    width: 100%;
   }
 }
