@@ -1,12 +1,11 @@
-import { useRef, useEffect, useState } from "react";
+import { useState } from "react";
 import { FormHeader } from "./FormHeader";
 import { FormContainer } from "./FormContainer";
 import { Input } from "../FormElements/Input";
 import { InputWrapper } from "../FormElements/InputWrapper";
 import { Button } from "../Button.js";
-import Picker from "@emoji-mart/react";
+import { EmojiPicker } from "./EmojiPicker";
 
-const tooltipPosition = { top: null };
 const PLACEHOLDERS = [
   { iconId: "airplane", name: "Traveling" },
   { iconId: "closed_book", name: "Reading" },
@@ -23,31 +22,21 @@ const PLACEHOLDERS = [
 export function Interests({ step, data, onAddInterest, onChange, onDeleteEntry }) {
   const [isTooltipActive, setIsTooltipActive] = useState(false);
   const [selectedInterest, setSelectedInterest] = useState(null);
-  const tooltipRef = useRef(null);
   const entries = data.length;
 
   const hideEmojiTooltip = () => setIsTooltipActive(false);
 
-  useEffect(() => {
-    const tooltip = tooltipRef.current;
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].intersectionRatio < 1) tooltip.style.bottom = "10px";
-      else tooltip.style.top = tooltipPosition.top;
+  function handleEmojiSelect(e) {
+    onChange(selectedInterest, "iconId", e.id);
+    hideEmojiTooltip();
+  }
 
-      tooltip.style.position = "absolute";
-    });
+  function handleClickOutsidePicker(e) {
+    const iconPickerBtn = e.target.closest(".btn-icon-picker");
+    if (iconPickerBtn) return;
 
-    if (tooltip) {
-      observer.observe(tooltip);
-    }
-
-    return () => {
-      if (tooltip) {
-        observer.unobserve(tooltip);
-        tooltip.style = {};
-      }
-    };
-  });
+    hideEmojiTooltip();
+  }
 
   return (
     <section className="edit-block">
@@ -76,6 +65,7 @@ export function Interests({ step, data, onAddInterest, onChange, onDeleteEntry }
           />
         }
       />
+
       <FormContainer>
         {data.map((interest, index) => {
           let iconId;
@@ -88,11 +78,9 @@ export function Interests({ step, data, onAddInterest, onChange, onDeleteEntry }
           return (
             <InputWrapper variant="row" key={interest.id}>
               <Button
-                onClick={(e) => {
+                onClick={() => {
                   setIsTooltipActive(true);
                   setSelectedInterest(interest.id);
-
-                  tooltipPosition.top = `${e.pageY}px`;
                 }}
                 title={interest.name ? `Change ${interest.name} icon` : "Change interest icon"}
                 content={<em-emoji id={iconId} size="2em"></em-emoji>}
@@ -116,30 +104,18 @@ export function Interests({ step, data, onAddInterest, onChange, onDeleteEntry }
                   title="Delete interest"
                 />
               )}
+
+              {isTooltipActive && interest.id === selectedInterest && (
+                <EmojiPicker
+                  shouldRender={isTooltipActive}
+                  onEmojiSelect={handleEmojiSelect}
+                  onClickOutside={handleClickOutsidePicker}
+                ></EmojiPicker>
+              )}
             </InputWrapper>
           );
         })}
       </FormContainer>
-
-      {isTooltipActive && (
-        <div id="emojiTooltip" ref={tooltipRef}>
-          <Picker
-            previewPosition="none"
-            skinTonePosition="none"
-            onEmojiSelect={(e) => {
-              onChange(selectedInterest, "iconId", e.id);
-              hideEmojiTooltip();
-            }}
-            onClickOutside={(e) => {
-              const iconPickerBtn = e.target.closest(".btn-icon-picker");
-              if (iconPickerBtn) return;
-
-              hideEmojiTooltip();
-            }}
-            maxFrequentRows={1}
-          />
-        </div>
-      )}
     </section>
   );
 }

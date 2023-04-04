@@ -244,11 +244,16 @@ button {
     margin-right: auto;
   }
 
+  .btn-icon-picker {
+    font-size: 1.2rem;
+    margin-right: 8px;
+  }
+
   .btn-primary,
   .btn-icon-add,
   .btn-icon-delete,
   .btn-secondary {
-    padding: 8px 15px;
+    padding: 8px 12px;
   }
 
   .margin-t-25 {

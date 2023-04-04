@@ -151,6 +151,7 @@ label {
 
 .input-wrapper.row {
   flex-direction: row;
+  position: relative;
 }
 
 .flex-2-rows {
@@ -163,10 +164,15 @@ label {
   appearance: none;
   border: none;
   padding: 10px 20px;
-  background-color: #202020;
+  background-color: hsl(0, 0%, 13%);
   color: white;
   font-weight: 500;
   border-radius: 4px;
+}
+
+#emojiTooltip {
+  position: absolute;
+  z-index: 8;
 }
 
 @media only screen and (max-width: 768px) {
